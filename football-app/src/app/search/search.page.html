@@ -1,0 +1,58 @@
+
+<ion-header class="ion-padding" [ngClass]="{'ios-mr-top': device}" >
+  <div class="header" >
+    <ion-back-button (click)="goBack()" icon="chevron-back-outline" text="" ></ion-back-button>
+    <ion-searchbar 
+    (ionChange)="searchInput($event)"  
+    [(ngModel)]="search" mode="ios" 
+    placeholder="{{dataLanguage.SEARCH}}"
+    ></ion-searchbar>
+  </div>
+</ion-header>
+<ion-content class="ion-padding" *ngIf="check" >
+  <div class="league"  >
+    <div class="item" *ngFor="let item of league"(click)="toggleSubcriseLeague(item)">
+      <img [src]="item.league_logo" alt="" />
+      {{item.league_name}}
+      <img class="star" [src]="item.img" alt="" >
+    </div>
+  </div>
+   <ion-label *ngIf="league.length>0" class="orther"(click)="goLeagueOrther()">{{dataLanguage.SEE_MORE}} >></ion-label>
+   <!-- ====== TEAM ======-->
+   <div class="team">
+    <ion-label class="label">{{dataLanguage.POPULAR_TEAMS}}</ion-label>
+    <div class="item" *ngFor="let item of team" (click)="toggleSubcriseTeam(item)">
+      <img [src]="item.team_badge" alt="" />
+      {{item.team_name}}
+      <img class="star" [src]="item.img" alt="" >
+    </div>
+   </div>
+   <ion-label *ngIf="team.length>0"class="orther"(click)="goTeamOrther()">{{dataLanguage.SEE_MORE}} >></ion-label>
+   
+    <!-- ===== PLAYER ======-->
+    <div class="player">
+      <ion-label class="label">{{dataLanguage.POPULAR_PLAYERS}}</ion-label>
+      <div class="item" *ngFor="let item of players"(click)="toggleSubcrisePlayer(item)">
+        <img src="assets/img/football-player.png" alt="" />
+        {{item.player_name}}
+        <img class="star" [src]="item.img" alt="" >
+     </div>
+    </div>
+    <ion-label *ngIf="players.length>0" class="orther"(click)="goPlayerOrther()">{{dataLanguage.SEE_MORE}} >></ion-label>
+   
+</ion-content>
+<ion-content class="ion-padding" *ngIf= "!check" >
+  <div class="result">
+    <ion-label class="label">{{dataLanguage.RESULT}}</ion-label>
+    <div class="item" *ngFor="let item of result"(click)="toggleSubcriseSearch(item)">
+      <img [src]="item.logo" alt="" />
+      {{item.name}}
+      <img class="star" [src]="item.img" alt="" >
+    </div>
+    <div *ngIf="result.lenght == 0">
+      {{dataLanguage.DATA_NOT_FOUND}}
+    </div>
+  </div>
+
+</ion-content>
+

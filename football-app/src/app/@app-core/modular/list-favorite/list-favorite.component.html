@@ -1,0 +1,29 @@
+<ion-content class="ion-padding">
+  <div class="group team">
+    <ion-item-divider class="item-header">
+      <ion-text slot="start"></ion-text>
+      <ion-buttons
+        slot="end"
+        (click)="toggleAllTeamClick()"
+        [ngClass]="{'show': checkAllTeam}"
+      >
+        <img [src]="imgTeam" alt="" [(ngModel)]="img" />
+        Bật tất cả
+      </ion-buttons>
+    </ion-item-divider>
+    <ion-item-group class="group-team" *ngFor="let item of listTeam">
+      <div class="item">
+        <img [src]="item.team_badge" alt="" />
+        {{item.team_name}}
+        <ion-toggle
+          checked="{{item.notification}}"
+          (ionChange)="myChangeTeam(item)"
+        ></ion-toggle>
+      </div>
+    </ion-item-group>
+    <ion-item-group class="add">
+      Thêm <img src="assets/img/add.svg" alt="" />
+    </ion-item-group>
+  </div>
+
+</ion-content>

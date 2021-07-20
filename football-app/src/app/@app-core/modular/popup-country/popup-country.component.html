@@ -1,0 +1,14 @@
+<div class="container-country">
+  <ion-list class="list-country">
+    <ion-item *ngFor="let item of data_country" (click)="activeCountry(item)">
+      <img src="{{item.country_logo}}"/>
+      <ion-label>{{ item.country_name }}</ion-label>
+      <ion-button
+        [ngClass]="{ 'active-btn': item.country_id == idActive }"
+        class="no-active"
+      >
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <div class="footer-country"></div>
+</div>

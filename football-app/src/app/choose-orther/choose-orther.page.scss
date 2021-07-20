@@ -1,0 +1,39 @@
+ion-header {
+  background-color: var(--white-not-change);
+  z-index: -1;
+  .header{
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    ion-back-button {
+      display: block;
+      padding-top: 5px;
+      color: var(--grayA5-color);
+      z-index: 11;
+    }
+  
+ion-searchbar {
+  font-family: "Saira", sans-serif !important;
+  width: 79%;
+  padding: 0;
+  --background: #eaeaea;
+  height: 36px;
+  border-radius: 8px;
+  margin: 0 auto;
+  color: var(--grayA5-color);
+}
+  }
+  padding-bottom: 0;
+
+}
+  ion-content {
+    --padding-top: 0;
+    --background : var(--white-not-change);
+    .team {
+      ion-label {
+          line-height: 48px;
+          color: var(--back-not-change);
+      }
+  }
+}

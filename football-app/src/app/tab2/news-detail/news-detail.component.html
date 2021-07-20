@@ -1,0 +1,34 @@
+<!-- <ion-header *ngIf="dataNews">
+  <ion-back-button icon="chevron-back-outline" text="" class="back-btn">
+  </ion-back-button>
+  <ion-title>{{dataLanguage.NEW_DETAILS}}</ion-title>
+</ion-header> -->
+<ion-header>
+  <div
+  [ngClass]="{'ios-mr-top': device}"
+    class="header-cover"
+    [style.background]="
+      headerCustom.background ? headerCustom.background : '#fff'"
+    [style.color]="headerCustom.color ? headerCustom.color : '#424242'"
+  >
+    <ion-back-button
+      defaultHref="/match/news"
+      icon="chevron-back-outline"
+      text=""
+    ></ion-back-button>
+    <div class="header">
+      <ion-text>{{ dataLanguage.NEW_DETAILS }}</ion-text>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content *ngIf="dataNews" class="ion-padding">
+  <ion-buttons class="container-source">
+    <p class="text-title">{{ dataNews.title }}</p>
+    <p class="text text-source">{{ dataLanguage.SOURCE }}: bongdaplus.vn</p>
+    <p class="text text-date">{{ formatDate(dataNews.created_at) }}</p>
+  </ion-buttons>
+  <p class="text-summary" [innerHTML]="dataNews.summary"></p>
+  <div class="content-news" [innerHTML]="dataNews.content"></div>
+  <div *ngIf="footer != ''" class="content-footer" [innerHTML]="footer"></div>
+</ion-content>

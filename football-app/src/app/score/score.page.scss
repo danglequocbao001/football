@@ -1,0 +1,458 @@
+ion-header {
+  z-index: -1;
+  padding-top: 0;
+  background-color: var(--white-not-change);
+
+  .header {
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+
+    ion-icon {
+      font-size: 20px;
+      margin-right: 16px;
+      color: #8b8b8b;
+      ;
+    }
+  }
+
+  ion-toggle {
+    position: relative;
+    width: 55px;
+    height: 23px;
+    margin-right: 14px;
+    --background: #cdcdcd;
+    border-radius: 32px;
+    --handle-width: 29px;
+    --handle-height: 21px;
+    padding: 0;
+    --handle-border-radius: 32px;
+    --background-checked: #ffeea9;
+    --handle-background-checked: var(--orange-color);
+  }
+
+  .toggle .track {
+    border-radius: 6px !important;
+    width: 70px;
+  }
+
+  ion-toggle::before {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    content: "LIVE";
+    color: var(--white-not-change);
+    font-size: 9px;
+    z-index: 1;
+    right: 3px;
+  }
+
+  ion-toggle.toggle-checked .ios ion-toggle::before {
+    right: 5px !important;
+  }
+
+  .ios ion-toggle::before {
+    right: 3px;
+    left: 56%;
+  }
+
+  .md ion-toggle::before {
+    right: 4px;
+  }
+
+  ion-toggle.toggle-checked {
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.25);
+  }
+
+  .list-day {
+    display: flex;
+    justify-content: space-around;
+
+    .date-active {
+      --background: #F2F2F2;
+    }
+
+    .date-active-img {
+      color: var(--orange-color);
+    }
+
+    .open-calendar {
+      height: 59px;
+      --background-activated: transparent;
+
+      span {
+        font-size: 14px;
+        color: #000;
+        position: absolute;
+        bottom: -2px;
+      }
+
+      .img-calendar-active {
+        color: var(--orange-color) !important;
+      }
+
+      .img-calendar {
+        position: absolute;
+        top: 0px;
+        background-color: #e7e7e7;
+        height: 40px;
+        padding: 0 7px;
+        border-radius: 7px;
+        color: #484848;
+        font-size: 28px;
+      }
+    }
+
+    .button-solid {
+      --box-shadow: none;
+    }
+
+    ion-button {
+      text-align: center;
+      margin-bottom: 6px;
+      --border-radius: 10px;
+      min-width: 15vw;
+      min-height: 50px;
+      text-transform: inherit;
+      font-size: 15px;
+      --background: #fff;
+      --background-activated: transparent;
+
+      .item-mutual-active {
+        color: var(--orange-color) !important;
+      }
+
+      .date-calendar {
+        position: absolute;
+        top: 10px;
+        color: #484848;
+      }
+
+      .day-calendar {
+        position: absolute;
+        top: 27px;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.6);
+      }
+    }
+
+  }
+
+  .calendar {
+    transform: translateY(-41px);
+
+    .wrapper-calendar {
+      background-color: #fff;
+      position: relative;
+      box-shadow: 0px 2px 28px rgba(0, 0, 0, 0.25);
+      padding: 0 16px;
+      border-radius: 9px;
+      transition: all 0.3s;
+
+      .header-calendar {
+        justify-content: center;
+        color: #333333;
+        background-color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        height: 28px;
+        font-weight: 550;
+        padding-top: 10px;
+
+        .date-month {
+          width: 160px;
+          text-align: center;
+        }
+
+        .dates {
+          margin-top: 32px;
+          margin-bottom: 4px;
+          display: flex;
+          font-weight: 700;
+
+          ion-label {
+            width: 12vw;
+            text-align: center;
+            color: #fff;
+          }
+        }
+
+        ion-icon {
+          font-size: 22px;
+        }
+
+        .name-month {
+          padding: 0 40px;
+          font-size: 24px;
+        }
+      }
+
+      .day-of-month {
+        display: flex;
+        flex-wrap: wrap;
+        color: #000;
+        margin-left: 3vw;
+        min-height: 280px;
+        background: #fff;
+
+        .dates {
+          margin-top: 10px;
+          margin-bottom: 4px;
+          display: flex;
+          font-weight: 700;
+
+          ion-label {
+            width: 12vw;
+            //font-size: 18px;
+            text-align: center;
+            color: #000;
+          }
+        }
+
+        .day-item {
+          height: 40px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .to-day {
+          color: #fff !important;
+          font-size: 19px !important;
+          background-color: var(--orange-color);
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        .day-in-month {
+          width: 12vw;
+          text-align: center;
+          font-size: 16px;
+          // height: 6vh;
+          display: flex;
+          color: #666666;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+      }
+
+      .day {
+        width: 12vw;
+        text-align: center;
+        font-size: 16px;
+        height: 6vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        border-radius: 50%;
+      }
+
+      .active {
+        content: "";
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        top: 5px;
+        right: 8px;
+        background-color: #fff;
+      }
+    }
+
+    .wrapper-calendar::before {
+      content: "";
+      border-width: 16px 19px;
+      border-style: solid;
+      color: #fff;
+      border-color: transparent transparent currentColor transparent;
+      position: absolute;
+      right: 13px;
+      top: -27px;
+    }
+  }
+
+  .calendar-ios {
+    transform: translateY(-8px) !important;
+  }
+
+
+  ion-segment {
+    --background: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+
+    ion-segment-button {
+      font-family: "Saira", sans-serif !important;
+      font-size: 15px;
+      background-color: #fff;
+      --background-checked: #fff;
+      --color-checked: var(--white-not-change);
+      --color: #acacac;
+      font-weight: 550;
+      margin: 0;
+      --border-radius: 5px;
+
+      &::part(indicator-background) {
+        background: #f6c33e;
+      }
+    }
+
+    .my-team {
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
+    .all {
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+  }
+
+  .slides {
+    ion-slide {
+      .image {
+        .img-slide {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .ios-mr {
+    margin-top: 20px;
+  }
+
+}
+
+//  { }
+.ios-header {
+  height: 100px;
+}
+
+ion-content {
+  --background: var(--white-not-change);
+   .not-data {
+     font-size: 18px;
+     text-align: center;
+     margin-top: 30px;
+   
+   }
+   
+   //.introduce-not-tab-new {
+   // margin-left: 43vw !important;
+ // }
+  .icon-introduce {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fcb441;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    margin-bottom: 2vh;
+    margin-left: 57vw;
+
+    animation-name: icon-animate;
+    animation: icon-introduce-animating 0.7s infinite;
+  }
+
+
+  @keyframes icon-introduce-animating {
+    0% {
+      transform: translateY(50%);
+    }
+
+    50% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(50%);
+    }
+  }
+  .data-not-found {
+    //background-color: #fff !important;
+    padding: 16px !important;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    margin-bottom: 3.5vh;
+    color: var(--back-not-change);
+  }
+  .data-not-found-ios  {
+   bottom: 86px;
+  }
+  --background: var(--white-not-change);
+
+  .not-data {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 30px;
+
+  }
+
+  //.introduce-not-tab-new {
+  // margin-left: 43vw !important;
+  // }
+  .icon-introduce {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fcb441;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;
+    margin-bottom: 2vh;
+    margin-left: 58.5vw;
+
+    animation-name: icon-animate;
+    animation: icon-introduce-animating 0.7s infinite;
+  }
+
+
+  @keyframes icon-introduce-animating {
+    0% {
+      transform: translateY(50%);
+    }
+
+    50% {
+      transform: translateY(0%);
+    }
+
+    100% {
+      transform: translateY(50%);
+    }
+  }
+
+  .data-not-found {
+    //background-color: #fff !important;
+    padding: 16px !important;
+    position: fixed;
+    text-align: center;
+    bottom: 0;
+    margin-bottom: 13vh;
+    color: var(--back-not-change);
+  }
+
+  .data-not-found-ios {
+    bottom: 86px;
+  }
+}

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-buttons></ion-buttons>
+  <ion-title>{{dataLanguage.TIME}}</ion-title>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-radio-group mode="ios" [value]="activeTimeZone" class="list">
+    <ion-item
+      *ngFor="let timeZone of timeZones"
+      class="item"
+      (click)="setTimeZone(timeZone.name)"
+      lines = "none"
+    >
+      <ion-label class="label"
+        >{{ timeZone.name }} {{dataLanguage.HOURS}}</ion-label
+      >
+      <ion-radio
+        [ngClass]="{'activeRadio':timeZone.name == activeTimeZone}"
+        class="radio"
+        [value]="timeZone.name"
+      >
+      </ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-content>
+  <div class="football__image">
+    <ion-img [ngClass]="{'ios-mr-top': device}"  class="btn__back" src="../../../assets/icon/back.svg" (click)="back()"></ion-img>
+    <div class="white-space">
+      <div class="form__login">
+        <ion-text class="title">{{dataLanguage.CHECK_EMAIL}}</ion-text>
+        <ion-text class="subtitle-2">{{dataLanguage.ENTER_VER_CODE}}</ion-text>
+        
+        <form [formGroup]="inputCode">
+          <ion-row class="digit_code">
+            <ion-input #code1 (keyup)="nextTab($event, code1, code1, code2)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code1"></ion-input>
+            <ion-input #code2 (keyup)="nextTab($event, code1, code2, code3)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code2"></ion-input>
+            <ion-input #code3 (keyup)="nextTab($event, code2, code3, code4)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code3"></ion-input>
+            <ion-input #code4 (keyup)="nextTab($event, code3, code4, code5)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code4"></ion-input>
+            <ion-input #code5 (keyup)="nextTab($event, code4, code5, code6)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code5"></ion-input>
+            <ion-input #code6 (keyup)="nextTab($event, code5, code6, code6)" class="ion-no-padding" maxlength="1" type="numeric" formControlName="code6"></ion-input>
+          </ion-row>  
+        </form>
+          
+          <ion-button class="ion-no-padding btn__next" (click)="next()">{{dataLanguage.NEXT}}</ion-button>
+        <br/>
+        <ion-text class="signup" (click)="back()">{{dataLanguage.BACK_LOGIN}}</ion-text>
+      </div>
+      
+      <div class="login-method">
+        <ion-row>
+          <ion-col class="ion-no-padding" size="3">
+            <div class="line"> </div>
+          </ion-col>
+          <ion-col class="ion-text-center ion-justify-content-start" size="6">
+            <ion-text class="login-method-divider">{{dataLanguage.CON_BY}}</ion-text>
+          </ion-col>
+          <ion-col class="ion-no-padding" size="3">
+            <div class="line"> </div>
+          </ion-col>
+        </ion-row>
+        
+        <div class="login-row">
+          <ion-img src="../../../assets/icon/login-google.svg"></ion-img>
+          <ion-img src="../../../assets/icon/login-facebook.svg"></ion-img>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</ion-content>
+  

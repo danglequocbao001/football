@@ -1,0 +1,98 @@
+.list-match {
+    padding-top: 10px;
+    .display-flex {
+        background-color: #F2F2F2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .item {
+        width: 96%;
+        height: 43px;
+        margin: 0 auto;
+        margin-bottom: 5px;
+        border-radius: 5px;
+    }
+    .league {
+        background-color: #fff9e1;
+        border: 1.5px solid #F2F2F2;
+        font-weight: 500;
+        .img-league {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        span  { 
+            color: var(--back-not-change);
+        }
+    }
+    .match {
+        ion-slides {
+            ion-slide {
+              .image {
+                height: 85px;
+    
+                .img-slide {
+                  width: 100%;
+                }
+              }
+    
+            }
+          }
+    
+        .team {
+            width: 42.5vw;
+            display: flex;
+            align-items: center;
+            .img-status {
+                margin-left:4px;
+            }
+            .two-line {
+               
+                display: -webkit-box !important;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+              
+        }
+            .name {
+                flex: 1;
+                margin: 0 3px;
+                font-size: 15px;
+                text-align: center;
+                color: var(--back-not-change);
+            }
+          
+            .img-team-home {
+                float: right;
+            }
+            .img-team-away {
+                float: left;
+            }
+            .img-team {
+                width: 22px;
+                height: 22px;
+                border-radius: 50%;
+                margin: 0 5px;
+            }
+        }
+        .time {
+            font-size: 15.5px !important;
+           text-align: center;
+           line-height: 14px;
+        }
+        .score {
+            height: 35px;
+            display: flex;
+            width: 15vw;
+            font-size: 24px;
+            color: var(--orange-color);
+            border-radius: 4px;
+            border: 1px solid #DCDCDC;
+            background-color: var(--orange-second);
+            align-items: center;
+            justify-content: space-around;
+        }
+    }
+}

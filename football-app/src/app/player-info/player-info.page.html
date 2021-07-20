@@ -1,0 +1,159 @@
+<ion-header>
+<div class="img-background">
+  <ion-img class="btn__back" src="../../assets/icon/back.svg"></ion-img>
+  <ion-text class="name">{{info?.player_name}}</ion-text>
+  <ion-text class="position">{{info?.player_type}}</ion-text>
+</div>
+</ion-header>
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" value="profile">
+    <ion-segment-button value="profile">{{dataLanguage.PROFILE}}</ion-segment-button>
+    <ion-segment-button value="statistics">{{dataLanguage.STATISTIC}}</ion-segment-button>
+  </ion-segment>
+  
+  <div *ngIf="isProfile">
+    <div class="item">
+      <div class="title">{{dataLanguage.PLAYER_DETAIL}}</div>
+      <br>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="line-divider" size="6">
+              <div class="sub-element">
+                <ion-text class="main">{{dataLanguage.AGE}} {{info?.player_age}}</ion-text>
+                <ion-text class="sub">05-02-1985</ion-text>  
+              </div>
+              <div class="sub-element">
+                <ion-text class="main">1,88m</ion-text>
+                <ion-text class="sub">{{dataLanguage.HEIGHT}}</ion-text>  
+              </div>
+              <div class="sub-element">
+                <ion-text class="main">{{info?.player_number}}</ion-text>
+                <ion-text class="sub">{{dataLanguage.CLO_NUM}}</ion-text>  
+              </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="sub-element-2">
+              <ion-img src=""></ion-img>
+              <ion-text class="main">{{info?.player_country}}</ion-text>
+              <ion-text class="sub">{{dataLanguage.NATIONALITY}}</ion-text>
+            </div>
+            <div class="sub-element-2">
+              <ion-img src=""></ion-img>
+              <ion-text class="main">Juventus</ion-text>
+              <ion-text class="sub">{{dataLanguage.CUR_CLUB}}</ion-text>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    
+    <div class="item">
+      <div class="title">{{dataLanguage.STATISTIC}}</div>
+      <div class="container">
+        <div class="first-line">
+          <ion-img class="position" src=""></ion-img>
+          <ion-text class="position-text"></ion-text>
+        </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col class="sub-element-3">
+              <ion-img src ="../../assets/icon/sotran.svg"></ion-img>
+              <ion-text class="main">28/32</ion-text>
+              <ion-text class="sub">{{dataLanguage.NUM_MATCHES}}</ion-text>
+            </ion-col>
+            
+            <ion-col class="sub-element-3">
+              <ion-img src ="../../assets/icon/banthang.svg"></ion-img>
+              <ion-text class="main">25(5Pk)</ion-text>
+              <ion-text class="sub">{{dataLanguage.GOALS}}</ion-text>
+            </ion-col>
+            
+            <ion-col class="sub-element-3">
+              <ion-img src ="../../assets/icon/hotro.svg"></ion-img>
+              <ion-text class="main">3</ion-text>
+              <ion-text class="sub">{{dataLanguage.ASSIST}}</ion-text>
+            </ion-col>
+            
+            <ion-col class="sub-element-3">
+              <ion-img src ="../../assets/icon/xephang.svg"></ion-img>
+              <ion-text class="main">7</ion-text>
+              <ion-text class="sub">{{dataLanguage.RATINGS}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-text class="detail">{{dataLanguage.SEE_MORE}} >></ion-text>
+      </div>
+      
+      <div class="item">
+        <div class="title">{{dataLanguage.TRAN_HISTORY}}</div>
+        <ion-grid class="history">
+          <ion-row class="history-detail">
+            <ion-col class="text">
+              <ion-text class="main">{{dataLanguage.TRANSFER}}</ion-text>
+              <br>
+              <ion-text class="sub">31/02/2021</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-text class="price">€11M</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-img class="divider" src="../../assets/icon/columdivider.svg"></ion-img>
+            </ion-col>
+            <ion-col>
+              <div class="club" size="5">
+                <ion-img src=""></ion-img>
+                <ion-text>Arsenal</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+          
+          <ion-row class="history-detail">
+            <ion-col class="text">
+              <ion-text class="main">{{dataLanguage.TRANSFER}}</ion-text>
+              <br>
+              <ion-text class="sub">31/02/2021</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-text class="price">€11M</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-img class="divider" src="../../assets/icon/columdivider.svg"></ion-img>
+            </ion-col>
+            <ion-col>
+              <div class="club" size="5">
+                <ion-img src=""></ion-img>
+                <ion-text>Arsenal</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+          
+          <ion-row class="history-detail">
+            <ion-col class="text">
+              <ion-text class="main">{{dataLanguage.TRANSFER}}</ion-text>
+              <br>
+              <ion-text class="sub">31/02/2021</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-text class="price">€11M</ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <ion-img class="divider" src="../../assets/icon/columdivider.svg"></ion-img>
+            </ion-col>
+            <ion-col>
+              <div class="club" size="5">
+                <ion-img src=""></ion-img>
+                <ion-text>Arsenal</ion-text>
+              </div>
+            </ion-col>
+          </ion-row>
+          
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!isProfile">
+    <ion-text>null</ion-text>
+  </div>
+  
+</ion-content>

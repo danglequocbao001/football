@@ -1,0 +1,37 @@
+<ion-header class="ion-padding" [ngClass]="{'ios-mr-top': device}" >
+  <div class="header" >
+    <ion-back-button  (click)="goBack()" icon="chevron-back-outline" text="" ></ion-back-button>
+    <ion-searchbar 
+    
+    [(ngModel)]="search" mode="ios" 
+    placeholder="{{dataLanguage.SEARCH}}"
+    ></ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="type=='League'" >
+    <div  class="team team-area"  > 
+      <ion-label>{{dataLanguage.POPULAR_TOUR_IN_REGION}}</ion-label>
+      <app-list-team [listLeagueInArea] ="league.inArea" [type]="type" [search]="search"></app-list-team>
+    </div>
+    <div class="team team-international"> 
+      <ion-label>{{dataLanguage.INTER_TOUR}}</ion-label>
+      <app-list-team [listLeagueInternational] ="league.international"[type]="type" [search]="search"></app-list-team>
+    </div>
+</ion-content>
+<ion-content class="ion-padding"*ngIf="type =='Team'" >
+  <div class="team team-area">
+    <ion-label>{{dataLanguage.POPULAR_TEAMS}}</ion-label>
+    <app-list-team [team] ="team" [type]="type"[search]="search"></app-list-team>
+  </div>
+  <ion-label *ngIf="arrLength == 0" style="display: block; text-align: center; font-weight: 500;">{{dataLanguage.CHOOSE_LEAGUE_FIRST}}</ion-label>
+</ion-content>
+<ion-content class="ion-padding"*ngIf="type =='Player'" >
+  <div class="team team-area" >
+    <ion-label>{{dataLanguage.POPULAR_PLAYERS}}</ion-label>
+    <app-list-team [listPlayer] ="players" [type]="type"[search]="search"></app-list-team>
+  </div>
+  <ion-label *ngIf="arrLength == 0" style="display: block; text-align: center; font-weight: 500;">{{dataLanguage.CHOOSE_LEAGUE_FIRST}}</ion-label>
+</ion-content>
+
+

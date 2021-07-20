@@ -1,0 +1,72 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <ion-back-button (click)="goBack()" icon="chevron-back-outline" text="" class="back-btn">
+  </ion-back-button>
+  <div class="group-team" *ngFor="let i of match">
+    <ion-buttons>
+      <img [src]="i.team_home_badge" alt="" />
+      <p class="two-line">{{i.match_hometeam_name}}</p>
+    </ion-buttons>
+    <ion-buttons class="score ">
+      <span class="one-line label"> {{i.league_name}}</span>
+      <span *ngIf="i.match_round !=''" class="one-line label"> {{convertRound(i.match_round)}}</span>
+
+      <!-- Trận đang đã diễn ra hoặc đang diễn ra: show tỉ số -->
+      <span class="score-team" *ngIf="i.status=='played'|| i.status =='playing'" style="color: #fcb441">
+        {{i.match_hometeam_score}}
+        <img src="assets/img/set.svg" alt="" class="set" />
+        {{i.match_awayteam_score}}
+      </span>
+      <!-- Đối những trân sắp diễn or cancle:  ra show thời gian sắp diễn ra của trận đấu-->
+      <span class="score-team" *ngIf="i.status == 'will-play' || i.status == 'cancle'">
+        {{timeConvert(i.match_time)}}
+      </span>
+      <!-- Đối những trận đang diễn ra: show số phút hiện tại của hiệp đấu  -->
+    
+      <div class="status">
+        <img onerror="this.src='../../assets/icon/banthang.svg'" [src]="i.imgStatus" alt="" class="img_status" />
+      </div>
+      <p   *ngIf="i.status =='playing'" class="day time-playing">
+        {{i.match_status}}'
+      </p>
+      <p class="day" >{{timeConvert(i.match_time)}}, {{convertDay(i.match_date)}}</p>
+    
+    </ion-buttons>
+    <ion-buttons>
+      <img [src]="i.team_away_badge" alt="" />
+      <p class="two-line">{{i.match_awayteam_name}}</p>
+    </ion-buttons>
+  </div>
+</ion-header>
+<ion-content >
+  <div class="news-container" >
+   
+    <div class="back-drop"></div>
+    <ion-item-group class="tab-home">
+      <div class="list-news">
+        <div *ngFor="let news of listNews" class="news-item">
+          <div (click)="gotoDetail(news.id)" class="news-content">
+            <ion-label text-wrap class="text-title"> {{news.title}} </ion-label>
+            <div class="text-hour">
+              <i class="fal fa-clock"></i>
+              <ion-label>{{ formatTime(news.created_at)}}</ion-label>
+            </div>
+            <img class="img-news" [src]="news.thumb_image" alt="" />
+          </div>
+
+          <div class="content-footer">
+            <div class="like-content">
+              <img [src]="news.img" alt="" (click)="toggleActionNews(news)" />
+              <span>{{news.like_count}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll #infinityScrollNews (ionInfinite)="loadMoreNews()">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+  </div>
+</ion-content>

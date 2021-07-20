@@ -1,0 +1,106 @@
+.btn__back {
+  width: 25px;
+  display: absolute;
+  padding-top: 10px;
+  padding-left: 10px;
+
+}
+.white-space {
+  background-color: white;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 70vh;
+  margin-top: 30vh;
+}
+.football__image {
+  height: 100vh;
+  background-image: url("../../../assets/img/football_background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.form__login {
+  padding-top: 25px;
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--gray56-color);
+  }
+}
+.component-collection {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 30px;
+  .component {
+    margin-bottom: 20px;
+    position: relative;
+    ion-text {
+      font-size: 14px;
+      color: var(--gray56-color);
+    }
+    ion-input {
+      font-size: 14px;
+      color: var(--gray56-color);
+      border-bottom: #727a81 1px solid;
+    }
+    .show-password {
+      position: absolute;
+      left: 95%;
+      bottom: 0;
+      transform: translateY(-50%);
+      z-index: 100;
+    }
+  }
+}
+.forget-password {
+  font-size: 14px;
+  color: #727a81;
+  float: right;
+  margin-right: 5vw;
+}
+.btn__next {
+  --background: #fcb441;
+  --background-activated: #ffd591;
+  --border-radius: 5px;
+  width: 80%;
+  height: 35px;
+  margin-top: 0px;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+.signup {
+  color: #0451c3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.login-method {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  ion-text {
+    font-size: 13px;
+    color: var(--gray56-color);
+  }
+  .line {
+    border-bottom: 1px solid #848484;
+    height: 15px;
+  }
+}
+.login-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  ion-img {
+    padding: 10px;
+  }
+}

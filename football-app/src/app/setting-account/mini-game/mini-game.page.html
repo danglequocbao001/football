@@ -1,0 +1,15 @@
+
+<ion-header >
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<!-- <ion-header >
+  <ion-title>{{dataMiniGame.title}}</ion-title>
+</ion-header> -->
+<ion-content class="ion-padding">
+  <ion-buttons class="container-source">
+    <p class="text-title" [innerHTML]="dataMiniGame?.description">
+  </ion-buttons>
+  <div class="content-news" [innerHTML]="dataMiniGame?.content">
+
+  </div>
+</ion-content>

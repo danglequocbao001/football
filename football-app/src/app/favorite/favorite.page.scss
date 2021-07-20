@@ -1,0 +1,150 @@
+ion-header {
+  z-index: -1;
+  background-color: var(--white-not-change);
+  .header{
+    height: 70px;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    ion-icon  {  
+      font-size: 20px;
+      margin-right: 16px;
+      color: #8b8b8b;
+    }
+  }
+  .slides {
+    ion-slide {
+
+      .image {
+
+        .img-slide {
+          width: 100%;
+         
+        }
+      }
+      
+    }
+  }
+  ion-slides {
+    ion-slide {
+      ion-img {
+        width: 100% !important;
+      }
+    }
+  }
+}
+.team {
+  ion-label {
+    line-height: 48px;
+  }
+}
+
+ion-content {
+  --background: #f2f2f2;
+  --padding-top: 0;
+  .group {
+    .item-header {
+      display: flex;
+      --padding-start: 0;
+      margin-bottom: 13px;
+      border-bottom: 0;
+      --background: #f2f2f2;
+      ion-text {
+        color: #565656;
+        font-size: 13px;
+      }
+      ion-buttons {
+        color: var(--orange-color);
+        font-weight: normal;
+        img {
+          margin-right: 6px;
+        }
+      }
+      .show {
+        color: #565656;
+      }
+      .show-league {
+        color: #fcb441;
+      }
+    }
+    .group-team {
+      .item {
+        background-color: #fff;
+        color: var(--back-not-change);
+        height: 48px;
+        margin-bottom: 4px;
+        font-size: 14px;
+        width: 100%;
+        border-radius: 7px;
+        align-items: center;
+        display: flex;
+
+        img {
+          width: 24px;
+          height: 24px;
+          margin-left: 10px;
+          margin-right: 6px;
+        }
+
+        .star {
+          font-size: 24px;
+          margin-right: 10px;
+        }
+
+        ion-icon {
+          margin-right: 10px;
+          font-size: 18px;
+        }
+        ion-toggle {
+          position: absolute;
+          right: 26px;
+          --background: #cdcdcd;
+          --background-checked: #ffeea9;
+          --handle-background-checked: var(--orange-color);
+        }
+      }
+    }
+    .add {
+      text-align: end;
+      margin-bottom: 10px;
+      color: var(--back-not-change);
+      img {
+        transform: translateY(28%);
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+.icon-bell {
+  width: 24px;
+  margin-left: 10px;
+  font-size: 24px;
+  margin-right: 6px;
+  color: #565656;
+}
+.active-bell {
+  color: #fcb441;
+}
+span {
+  color: #565656;
+}
+:host ::ng-deep .swiper-container-horizontal > .swiper-pagination-bullets {
+  height: 20px;
+  top: 264px;
+  @media screen and (max-height:481px) {
+    top: 150px;
+  }
+}
+:host ::ng-deep .swiper-pagination-bullet {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  border-radius: 8px;
+  background: #dadada;
+}
+:host ::ng-deep .swiper-pagination-bullet-active {
+  width: 21px;
+  height: 7px;
+  background-color: #fcb441;
+}

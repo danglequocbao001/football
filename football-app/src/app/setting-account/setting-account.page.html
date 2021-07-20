@@ -1,0 +1,183 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <ion-avatar (click)="routerLink('/auth/login')">
+    <ion-img class="avatar" [src]="avatar"></ion-img>
+  </ion-avatar>
+  <ion-text *ngIf="logined">{{name}}</ion-text>
+  <ion-button mode="ios" *ngIf="!logined" routerLink="/auth/login"
+    >{{dataLanguage.LOGIN}}</ion-button
+  >
+  <img *ngIf="logined" src="assets/icon/logout.svg" (click)="logOut()" alt="" />
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="title">{{dataLanguage.CONTENT_INDEX}}</ion-row>
+    <ion-row class="option" (click)="routerLink('/setting-account/all-match')">
+      <ion-col size="1">
+        <ion-img src="../../../assets/icon/setting-account/match.svg"></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.ALL_MATCH}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+    <a [href]="url_live" *ngIf="isLiveActive && !device">
+    <ion-row class="option">
+      <ion-col size="1" class="live">
+          <ion-img
+            src="../../../assets/icon/setting-account/livestream.svg"
+          ></ion-img>
+      </ion-col>
+
+      <ion-col class="text" size="10">{{dataLanguage.LIVE_STREAM}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </a>
+    <ion-row class="option" *ngIf="miniGameActive && !device">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/minigame.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col
+        (click)="routerLink('setting-account/mini-game')"
+        class="text"
+        size="10"
+        >{{dataLanguage.MINIGAME}}
+      </ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+    <!-- IOS platform -->
+    <a [href]="url_live" *ngIf="device && isLiveActiveIos" class="option">
+    <ion-row class="row">
+      <ion-col size="1">
+          <ion-img
+            src="../../../assets/icon/setting-account/livestream.svg"
+          ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.LIVE_STREAM}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+  </a>
+
+    <ion-row class="option" *ngIf="device && miniGameActiveIos">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/minigame.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col
+        (click)="routerLink('setting-account/mini-game')"
+        class="text"
+        size="10"
+        >{{dataLanguage.MINIGAME}}
+      </ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+    <ion-row class="title">{{dataLanguage.SETTINGS}}</ion-row>
+    <ion-row class="option" (click)="routerLink('/setting-account/notify')">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/notification.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.NOTIFICATION}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+
+    <ion-row class="option" (click)="routerLink('/setting-account/languages')">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/language.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.LANGUAGES}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+    <ion-row class="option" (click)="selectTimeZone()">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/oclock.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.TIME_ZONE_SET}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+
+    <ion-row class="title">{{dataLanguage.GENERAL}}</ion-row>
+
+    <!-- <ion-row class="option" (click)="routerLink('/setting-account/supports')">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/question.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.ASK_ANSWER}}</ion-col>
+      <ion-col size="1">
+        <ion-img src="../../../assets/icon/setting-account/arrow.svg"></ion-img>
+      </ion-col>
+    </ion-row> -->
+    <!-- <ion-row class="option">
+      <ion-col size="1">
+        <ion-img src="../../../assets/icon/setting-account/share.svg"></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.SHARE}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row> -->
+    <ion-row class="option" (click)="routerLink('/setting-account/policy')">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/privacy.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.PRIVACY_POLICY}}</ion-col>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-row>
+    <!-- <ion-row class="option" (click)="openModalFeedback()">
+      <ion-col size="1">
+        <ion-img
+          src="../../../assets/icon/setting-account/contact.svg"
+        ></ion-img>
+      </ion-col>
+      <ion-col class="text" size="10">{{dataLanguage.GIVE_FEEDBACK}}</ion-col>
+      <ion-col size="1">
+        <ion-img src="../../../assets/icon/setting-account/arrow.svg"></ion-img>
+      </ion-col>
+    </ion-row> -->
+  </ion-grid>
+</ion-content>
+<ion-buttons class="group-footer">
+  <div
+    [ngClass]="{'group-ios': device}"
+    class="group-button"
+    (click)="gotoPage('score')"
+  >
+    <img src="assets/icon/tab/score.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div
+    [ngClass]="{'group-ios': device}"
+    class="group-button"
+    (click)="gotoPage('news')"
+    *ngIf="newActive"
+  >
+    <img src="assets/icon/tab/news.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div
+    [ngClass]="{'group-ios': device}"
+    class="group-button"
+    (click)="gotoPage('favorite')"
+  >
+    <img src="assets/icon/tab/fav.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button group-active">
+    <img
+      src="assets/icon/tab/set-act.svg"
+      alt=""
+      style="background-color: #fff9e1"
+    />
+    <ion-label style="background-color: #fff9e1"
+      >{{this.dataLanguage.SETTINGS}}</ion-label
+    >
+  </div>
+</ion-buttons>

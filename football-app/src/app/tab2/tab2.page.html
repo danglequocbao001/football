@@ -1,0 +1,156 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <ion-slides [options]="slideOpts" class="slides">
+    <ion-slide *ngFor="let item of bannerData">
+      <a [href]="item.url" class="image">
+        <img [src]="item.thumbnail" class="img-slide" />
+      </a>
+    </ion-slide>
+  </ion-slides>
+  <ion-segment mode="ios" swipe-gesture="false" value="hot">
+    <ion-segment-button (click)="changeTag(1)" value="hot">
+      <ion-label [ngClass]="{'active_text': tagNew ==1}"
+        >{{dataLanguage.HIGHLIGHTS}}</ion-label
+      >
+    </ion-segment-button>
+    <ion-segment-button
+      (click)="changeTag(2)"
+      value="trans"
+      class="btn-tranfer"
+    >
+      <ion-label [ngClass]="{'active_text': tagNew == 2}"
+        >{{dataLanguage.TRANSFER}}</ion-label
+      >
+    </ion-segment-button>
+    <ion-segment-button
+      *ngIf="active == true"
+      (click)="changeTag(3)"
+      value="orther"
+    >
+      <ion-label [ngClass]="{'active_text': tagNew == 3}"
+        >{{dataLanguage.OTHERS}}</ion-label
+      >
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div class="news-container">
+    <div class="back-drop"></div>
+    <ion-item-group class="tab-home" *ngIf="tagNew==1">
+      <div class="list-news">
+        <div *ngFor="let news of listNews" class="news-item">
+          <div (click)="gotoDetail(news.id)" class="news-content">
+            <ion-label text-wrap class="text-title"> {{news.title}} </ion-label>
+            <div class="text-hour">
+              <i class="fal fa-clock"></i>
+              <ion-label>{{ formatTime(news.created_at)}}</ion-label>
+            </div>
+            <img class="img-news" [src]="news.thumb_image" alt="" />
+          </div>
+
+          <div class="content-footer">
+            <div class="like-content">
+              <img [src]="news.img" alt="" (click)="toggleActionNews(news)" />
+              <span>{{news.like_count}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll #infinityScrollNews (ionInfinite)="loadMoreNews()">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+    <ion-item-group class="tab-all" *ngIf="tagNew ==2">
+      <div class="list-news-trans">
+        <div *ngFor="let item of listTran" class="news-item-trans">
+          <div (click)="gotoDetail(item.id)" class="date-news">
+            {{ formatTime(item.created_at)}}
+          </div>
+          <ion-buttons (click)="gotoDetail(item.id)" class="item-trans-content">
+            <div>
+              <div class="group">
+                <img class="img-trans" [src]="item.thumb_image" alt="" />
+                <div class="content-right">
+                  <ion-label text-wrap class="text-title-right">
+                    {{item.title}}
+                  </ion-label>
+                  <p class="text-content three-dots-3">{{item.summary}}</p>
+                  <div class="display-news">{{dataLanguage.SHOW_POSTS}}</div>
+                </div>
+              </div>
+            </div>
+          </ion-buttons>
+          <ion-buttons class="footer_like">
+            <div class="like-item">
+              <img [src]="item.img" alt="" (click)="toggleActionLike(item)" />
+            </div>
+            <div class="like-item">
+              <img
+                [src]="item.imgDislike"
+                alt=""
+                (click)="toggleActionDisLike(item)"
+              />
+            </div>
+          </ion-buttons>
+        </div>
+      </div>
+      <ion-infinite-scroll
+        #infinityScrollTranfer
+        (ionInfinite)="loadMoreTranfer()"
+      >
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+    <ion-item-group class="tab-all" *ngIf="tagNew ==3 && active">
+      <div class="list-news">
+        <div *ngFor="let news of listOrther" class="news-item">
+          <div (click)="gotoDetail(news.id)" class="news-content">
+            <ion-label text-wrap class="text-title"> {{news.title}} </ion-label>
+            <div class="text-hour">
+              <i class="fal fa-clock"></i>
+              <ion-label>{{ formatTime(news.created_at)}}</ion-label>
+            </div>
+            <img class="img-orthers" [src]="news.thumb_image" alt="" />
+          </div>
+
+          <div class="content-footer">
+            <div class="like-content">
+              <img [src]="news.img" alt="" (click)="toggleActionNews(news)" />
+              <span>{{news.like_count}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ion-infinite-scroll
+        #infinityScrollOrther
+        (ionInfinite)="loadMoreOrthers()"
+      >
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-item-group>
+  </div>
+</ion-content>
+<ion-buttons class="group-footer">
+  <div  [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('score')">
+    <img src="assets/icon/tab/score.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button group-active" *ngIf="newActive">
+    <img src="assets/icon/tab/news-act.svg" alt="" />
+    <ion-label>{{this.dataLanguage.NEWS}}</ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('favorite')">
+    <img src="assets/icon/tab/fav.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('setting-account')">
+    <img src="assets/icon/tab/set.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+</ion-buttons>

@@ -1,0 +1,21 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-buttons *ngFor="let noti of arrayNotiDefault" class="list-noti">
+    <p class="name-noti">{{noti.name}}</p>
+
+    <ion-item *ngFor="let item of noti.arrayDetail" class="item-noti">
+      <p class="name-detail"> {{item.name}} </p>
+      <div (click)="setNoti(item)" [ngClass]="{'activeRadio':item.active}" class="tick-item">
+        <i *ngIf="item.active" class="check fas fa-check"></i>
+      </div>
+      <div (click)="setSound(item)" [ngClass]="{'activeSound':item.sound}" class="sound-item">
+        <ion-icon class="i-sound" name="musical-notes-outline"></ion-icon>
+      </div>
+    </ion-item>
+
+
+  </ion-buttons>
+</ion-content>

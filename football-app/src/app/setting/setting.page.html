@@ -1,0 +1,30 @@
+
+<ion-tabs>
+    <ion-tab-bar mode="ios" slot="bottom"[ngClass]="{'ion-tab-bar-ios': device}" >
+      <ion-tab-button [ngClass]="{'ion-tab-button-active': currentRouter === 'score'}" (click)="check('score')" tab ="score" >
+        <img src="{{iconScore}}"/>
+        <ion-label *ngIf="currentRouter == 'score'">{{footerList[0].title}}</ion-label>
+      </ion-tab-button>
+        <ion-tab-button  
+        *ngIf = "newActive"
+        [ngClass]="{'ion-tab-button-active': currentRouter === 'news'}" 
+        
+        (click)="check('news')" tab ="news" >
+  
+          <img src="{{iconNews}}"/>
+          <ion-label *ngIf="currentRouter == 'news'">{{footerList[1].title}}</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [ngClass]="{'ion-tab-button-active': currentRouter === 'favorite'}" 
+        (click)="check('favorite')" tab ="favorite" >
+      
+          <img src="{{iconFav}}"/>
+          <ion-label *ngIf="currentRouter == 'favorite'">{{footerList[2].title}}</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [ngClass]="{'ion-tab-button-active': currentRouter === 'setting-account'}" 
+        (click)="check('setting-account')" tab="setting-account">
+      
+          <img src="{{iconSet}}"/>
+          <ion-label *ngIf="currentRouter == 'setting-account'">{{footerList[3].title}}</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>

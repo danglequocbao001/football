@@ -1,0 +1,29 @@
+.header-cover {
+  ion-back-button {
+    display: block;
+    height: 60px;
+    width: 60px;
+    padding-top: 5px;
+    left: -6px;
+    color: var(--grayA5-color);
+    z-index: 11;
+    position: absolute;
+
+  }
+  .header {
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    height: 70px;
+    justify-content: center;
+
+    ion-text {
+      text-align: center;
+      text-transform: uppercase;
+      color: #565656;
+      font-weight: 550;
+      margin-right: 10px;
+      max-width: 35vh;
+    }
+  }
+}

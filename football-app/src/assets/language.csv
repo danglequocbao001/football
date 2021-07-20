@@ -1,0 +1,171 @@
+ROUTER,GROUP,NOTE,KEY,English,Vietnamese
+/home,,,SELECT_LEAGUE_BY_COUNTRY,Select league by country,Chọn giải đấu theo quốc gia
+DO NOT CHANGE COLUMN D,,,SELECT_APP_LANGUAGE,Select application's language,Chọn ngôn ngữ cho ứng dụng
+,,,LIVE_SCORE,Live score,Trực tiếp tỷ số bóng đá
+,,reusable,QUICK_VIEW,Quick view,Xem nhanh
+,,,USED_DEVICE,It looks like your device has used the app before! Click continue to start using,Có vẻ như thiết bị của bạn đã sử dụng ứng dụng trước đó! Bấm tiếp tục để bắt đầu sử dụng
+,,resuable,CONTINUE,Continue,Tiếp tục
+/tournaments,,,SELECT_FAVORITE_FOOTBALL_TEAM,Choose your favorite football team,Chọn đội bóng đá yêu thích
+,,reusable,IN_THE_AREA,In the area,Trong khu vực
+,,reusable,MOST_POPULAR,Most popular,Phổ biến nhất
+,,reusable,OTHER_TOURNAMENTS,Other tournaments,Giải đấu khác
+,,reusable,NEXT,Next,Tiếp tục
+,,reusable,SKIP,Skip,Bỏ qua
+,,,OTHER_FOOTBALL_TEAM,Other football team,Đội bóng khác
+,,reusable,SEARCH,Search...,Tìm kiếm...
+,,,OTHER_INFORMATION,Please looking for other infomations,Vui lòng tìm thông tin khác
+,,,OTHER_FOOTBALL_PLAYER,Other football player,Cầu thủ khác
+/setting/score,,,SCORE,Score,Tỷ số
+,,,MINE,Mine,Của tôi
+,,reusable,ALL,All,Tất cả
+,,,TODAY,Today,Hôm nay
+,,,TOMORROW,Tomorrow,Ngày mai
+,,,NO_MATCH,There are no matches,Không có trận đấu nào
+,,,MY_MATCH,My matches,Các trận đấu của tôi
+,,,OTHER_MATCH,Other matches,Các trận đấu khác
+,,,MATCH,Match,Trận đấu
+,,,SPECIAL_DATA,Special data,Số liệu chuyên môn
+,,,TEAM,Team,Đội hình
+,,,DEVELOPMENTS,Development,Diễn biến
+,,,RATINGS,Ratings,Xếp hạng
+,,,EVENT,Event,Sự kiện
+,,,TOP,Top,Hàng đầu
+,,,END_90,End 90',Kết thúc 90'
+,,,END,End,Kết quả trận đấu
+,,,BREAK,Break,Nghỉ giữa hiệp
+,,,UPDATING,Updating,Đang cập nhật
+,,,CURRENT_TABLE,Current table position,Vị trí bảng hiện tại
+,,,MATCH_INFOMATION,Match infomation,Thông tin trận đấu
+,,,ARBITRATION,Arbitration,Trọng tài
+,,,STADIUM,Stadium,Sân vận động
+,,,NUMBER_PARTICIPANTS,Spectator,Khán giả
+,,,OVERALL,Overall,Tổng thể
+,,,HOME_TEAM,Home team,Đội nhà
+,,,GUEST_TEAM,Guest team,Đội khách
+,,,BALL_CONTROL,Ball control,Kiếm soát bóng
+,,,GOAL_ATTEMPT,Goal Attempts,Tổng cú sút trúng khung thành
+,,,COR_PEN,Corner penalty,Phạt góc
+,,,SHOT_TARGET,Shot on target,Sút trúng mục tiêu
+,,,SHOT_OUT,Shot out,Sút ra ngoài
+,,,OFFSIDES,Offsides,Đá cánh
+,,,NUM_GOALKEEPER,Goalkeeper Saves,Số lần thủ môn cản phá được
+,,,FOUL,Foul,Phạm lỗi
+,,,RED_CARD,Red card,Thẻ đỏ
+,,,YELLOW_CARD,Yellow card,Thẻ vàng
+,,,TOTAL_PASS,Total Passes,Tổng đường truyền
+,,,TACKLES,Tackles,Tranh chấp bóng
+,,,ATTACK,Attack,Tấn công
+,,,DANGEROUS_ATT,Dangerous Attacks,Kiến tạo nguy hiểm
+,,,BLOCKED_SHOT,Blocked Shots,Đá hỏng
+,,,PENALTY_KICK_RESULT,Penalty kick result,Kết quả loạt đá penalty
+,,,EXTRA_TIME,Extra time,Hiệp phụ
+,,,COACH,Coach,Huấn luyện viên
+,,,SCORE_INTRODUCE,To watch the matches of your favorite tournaments separately please select in the favorites,Để theo dõi riêng những trận đấu của các giải bạn yêu thích vui lòng chọn ở mục yêu thích
+/setting/news,,reusable,NEWS,News,Tin tức
+,,,FAVOURITE,Favourite,Yêu thích
+,,,HIGHLIGHTS,Highlights,Nổi bật
+,,,TRANSFER,Transfer,Chuyển nhượng
+,,,SHOW_POSTS,Show posts,Hiển thị bài viết
+,,,NEW_DETAILS,New details,Chi tiết
+,,,SOURCE,Source,Nguồn
+,,,OTHERS,Others,Khác
+/setting/favorite,,,FAVORITE_FOOTBALL_TEAM,Favorite football team,Đội bóng ưa thích
+,,,FAVORITE_LEAGUE,Favorite league,Giải đấu ưa thích
+,,,FAVORITE_PLAYER,Favorite player,Cầu thủ ưa thích
+,,reusable,TURN_ALL_ON,Turn all on,Bật tất cả
+,,reusable,MORE,More,Thêm
+,,,POPULAR_TEAMS,Popular teams,Đội đấu phổ biến
+,,,POPULAR_PLAYERS,Popular players,Cầu thủ phổ biến nhất
+,,,POPULAR_TOUR_IN_REGION,Popular tournaments in the region,Giải đấu phổ biến trong khu vực
+,,,INTER_TOUR,International tournament,Giải đấu quốc tế
+,,,CHOOSE_LEAGUE_FIRST,Please choose your favorite league first,Hãy chọn giải đấu ưa thích trước
+/setting/setting-account,,,HOME_PAGE,Home page,Trang chủ
+,,,CHOOSE_HOME_PAGE,Choose your home page,Chọn trang chủ của bạn
+,,,CONTENT,Content,Nội dung
+,,,ALL_MATCH,All matches,Tất cả trận đấu
+,,,ALL_LEAGUE,All league,Tất cả giải đấu
+,,,SETTINGS,Settings,Cài đặt
+,,reusable,CONFIRM,Confirm,Xác nhận
+,,,LIVE_STREAM,Live stream,Live stream
+,,,MINIGAME,Minigame,Minigame
+,,,TIME_ZONE_SET,Time zone,Múi giờ
+,,,SHARE,Share,Chia sẻ
+,,,CONTENT_INDEX,Content,Nội dung
+/setting-account/notify,,reusable,NOTIFICATION,Notification,Thông báo
+,,,DEFAULT_NOTIFY,Default notify,Thông báo mặc định
+,,,TURN_ALL_NOTIFY,Turn on all notify,Bật tất cả thông báo
+,,,NEWS_NOTIFICATION,News notification,Thông báo tin tức
+,,,ALARM_TONE,Alarm tone,Âm báo
+,,,DARK_MODE,Dark mode,Chế độ ban đêm
+,,,MY_SCORE,My score,Điểm của tôi
+,,,LANGUAGES,Languages,Ngôn ngữ
+,,,GENERAL,General,Chung
+,,,ASK_ANSWER,Ask & answer,Hỏi & đáp
+,,,PRIVACY_POLICY,Privacy policy,Chính sách riêng tư
+,,,GIVE_FEEDBACK,Give us your feedback,Phản hồi cho chúng tôi
+/setting-account/notify/default-notify,,,PENALTY,Penalty,Phạt đền
+,,,MATCH_REMIND,Match reminder,Nhắc nhở trận đấu
+,,,MATCH_BEGIN,The match begins,Trận đấu bắt đầu
+,,,MATCH_RESULT,Match result,Kết quả trận đấu
+,,,COR_POINT,Corresponding points,Điểm tương ứng
+,,,HIGHTLIGHT_ONLY,Watch highlights only,Chỉ xem nổi bật
+,,,MATCH_EVENT,Match event,Sự kiện trận đấu
+,,,VAR_EVENT,VAR Events,Sự kiện VAR
+,,,MATCH_STATUS,Match status,Tình trạng trận đấu
+/setting-account/all-match,,,INTERNATIONAL,International,Quốc tế
+,,do not change this row,NATIONAL_TEAM,National team,Đội tuyển quốc gia
+,,do not change this row,INTER_CLUB,International club,Câu lạc bộ quốc tế
+,,,NA_AR_A_Z,Nation/Area(A-Z),Quốc gia/Khu vực(A-Z)
+/setting-account/all-match/international,,,NORTH_AMERICA,North America,Bắc Mỹ
+,,,ASIA,Asia,Châu Á
+,,,EUROPE,Europe,Châu Âu
+,,,OCEANIA,Oceania,Châu Đại Dương
+,,,AFRICA,Africa,Châu Phi
+,,,USA,USA,Hoa Kỳ
+,,,SOUTH_AMERICA,South America,Nam Mỹ
+,,reusable,SEE_MORE,See more,Xem thêm
+/setting-account/supports,,,FRE_QUES,Frequently asked questions,Những câu hỏi thường gặp
+,,reusable,CLOSE,Close,Đóng
+,,,TIME,Time,Thời gian
+,,,HOURS,Hours,Giờ
+/feedback,,,FEEDBACK,Feedback,Phản hồi
+,,,FEEDBACK_CONTENT,Please describe your problem clearly or write general feedback:,Vui lòng mô tả rõ vấn đề bạn gặp phải hoặc viết phản hồi chung:
+,,,ENTER_FEEDBACK_CONTENT,Enter the content...,Nhập nội dung...
+,,reusable,SEND,Send,Gửi
+,,,SEND_SUC,Send success!,Gửi thành công!
+,,,SEND_MORE,Send more feedback,Gửi thêm nhận xét
+/auth/login,,,LOGIN,Login,Đăng nhập
+,,,EMAIL,Email,Email
+,,,ENTER_EMAIL,Enter your email,Nhập email
+,,,PASSWORD,Your password,Mật khẩu của bạn
+,,reusable,FOR_PASS,Forgot password,Quên mật khẩu
+,,,SIGN_UP,Sign up,Đăng ký
+,,,CON_BY,Countinue by,Tiếp tục bằng
+/auth/signup,,,RE_PASSWORD,Re-enter the password,Nhập lại mật khẩu
+/auth/forgot-password,,,SEND_VERTIFICATION,Send verification code,Gửi mã xác nhận
+,,,CHECK_EMAIL,Check your email,Kiểm tra email của bạn
+,,,ENTER_VER_CODE,Enter the vertification code we just sent you,Nhập mã chúng tôi đã gửi cho bạn
+,,,BACK_LOGIN,Back to login,Quay trở lại đăng nhập
+,,,NEW_PASS,Enter new password,Nhập mật khẩu mới
+/player-info,,,PROFILE,Profile,Hồ sơ
+,,,STATISTIC,Statistic,Thống kê
+,,,PLAYER_DETAILS,Player details,Chi tiết cầu thủ
+,,,AGE,Age,Tuổi
+,,,HEIGHT,Height,Chiều cao
+,,,CLO_NUM,Clothers number,Số áo
+,,,NATIONALITY,Nationality,Quốc tịch
+,,,CUR_CLUB,Current club,Câu lạc bộ hiện tại
+,,,NUM_MATCHES,Number of matches,Số trận
+,,,GOALS,Goals,Bàn thắng
+,,,ASSIST,Assist,Hỗ trợ
+,,,TRAN_HISTORY,Transfer history,Lịch sử chuyển nhượng
+,,resuable,WANNA_CANCEL,Do you want to unsubscribe?,Bạn có muốn hủy đăng ký?
+,,resuable,YES,Yes,Đồng ý
+,,resuable,NO,No,Hủy
+,,resuable,EXIT_APP,Do you want to exit app?,Bạn có muốn thoát ứng dụng?
+,,resuable,DATA_NOT_FOUND,Data not found,Không có dữ liệu
+/search,,,S_POL_MATCH,Popular tournaments,Giải đấu phổ biến
+,,,RESULT,Result,Kết quả
+,,,ROUND,Round,Vòng
+,,,SUBSTIUTES,Substitutes,Dự bị
+/setting-account/policy,,resuable,POLICY,Privacy Policy,Chính sách bảo mật

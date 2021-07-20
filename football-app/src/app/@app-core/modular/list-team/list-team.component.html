@@ -1,0 +1,51 @@
+<div *ngIf="indexSlide === 0">
+  <div class="item" *ngFor="let item of listInArea | filter: search"(click)="toggleSubcriseTournaments(item)">
+    <img [src]="item.league_logo" alt="" />
+    {{item.league_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+
+  <div class="item" *ngFor="let item of listPopular | filter: search"(click)="toggleSubcriseTournaments(item)">
+    <img [src]="item.league_logo" alt="" />
+    {{item.league_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+</div>
+
+
+<div *ngIf="indexSlide === 1"> 
+  <div class="item" *ngFor="let item of listTeam | filter: search"(click)="toggleSubcriseTeam(item)">
+    <img *ngIf="item.team_badge.length > 0" [src]="item.team_badge" alt="" />
+    {{item.team_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+ </div>
+ <div *ngIf="type=='League'"> 
+  <div class="item" *ngFor="let item of listLeagueInArea | filter: search"(click)="toggleSubcriseLeague(item)">
+    <img [src]="item.league_logo" alt="" />
+    {{item.league_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+ 
+ </div>
+ <div *ngIf="type =='League'">
+  <div class="item" *ngFor="let item of listLeagueInternational | filter: search"(click)="toggleSubcriseLeague(item)">
+    <img [src]="item.league_logo" alt="" />
+    {{item.league_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+ </div>
+ <div *ngIf="type=='Team'">
+  <div class="item" *ngFor="let item of team | filter: search"(click)="toggleSubcriseTeam(item)">
+    <img [src]="item.team_badge" alt="" />
+    {{item.team_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+ </div>
+ <div *ngIf="type=='Player'">
+  <div class="item" *ngFor="let item of listPlayer | filter: search"(click)="toggleSubcrisePlayer(item)">
+    <img src="assets/img/football-player.png" alt="" />
+    {{item.player_name}}
+    <img class="star" [src]="item.img" alt="" >
+  </div>
+ </div>

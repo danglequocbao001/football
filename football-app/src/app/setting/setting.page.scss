@@ -1,0 +1,51 @@
+ion-tab-bar {
+  height: 53px;
+  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.25);
+  justify-content: space-around;
+  --background: var(--white-not-change);
+  ion-tab-button {
+    background: #f2f2f2;
+    border-radius: 5px;
+    margin: 1vh 1vh;
+    height: 38px;
+    // display: flex;
+    // flex-direction: initial !important;
+    max-width: 7.8vh;
+    i {
+      font-size: 21px;
+    }
+    ion-label {
+      line-height: 16px;
+      font-size: 1.37vh;
+    }
+    :host ::ng-deep .button-native {
+      // display: flex;
+      // flex-direction: initial !important;
+      max-width: 30px;
+    }
+  }
+
+  .ion-tab-button-active {
+    background: #f2f2f2;
+    border-radius: 6px;
+    margin: 0;
+    height: 45px;
+    // display: flex;
+    // flex-direction: initial !important;
+    max-width: 10vh;
+    img {
+      margin-top: 6px;
+    }
+    i {
+      margin-top: 4px;
+    }
+  }
+
+  ion-tab-button.tab-selected {
+    background: #fff9e1 !important;
+    --color-selected: #fcb441;
+  }
+}
+.ion-tab-bar-ios  {
+  height: 63px;
+}

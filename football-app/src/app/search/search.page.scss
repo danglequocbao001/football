@@ -1,0 +1,86 @@
+ion-header {
+  background-color: var(--white-not-change);
+  z-index: -1;
+  .header{
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    ion-back-button {
+      display: block;
+      padding-top: 5px;
+      color: var(--grayA5-color);
+      z-index: 11;
+    }
+    
+ion-searchbar {
+  font-family: "Saira", sans-serif !important;
+  width: 79%;
+  padding: 0;
+  --background: #eaeaea;
+  height: 36px;
+  border-radius: 8px;
+  margin: 0 auto;
+  color: var(--grayA5-color);
+}
+  }
+  padding-bottom: 0;
+
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+ion-content {
+  --padding-top:0;
+  --background: var(--white-not-change);
+}
+.orther {
+  display: block;
+  margin: 5px 0;
+  text-align: center;
+  color: var(--orange-color);
+}
+
+.league {
+  height: 342px;
+  overflow: hidden;
+}
+
+.team,
+.player {
+  height: 288px;
+  overflow: hidden;
+}
+
+.item {
+  background-color: var(--grayF2-color);
+  color: var(--back-not-change);
+  height: 48px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  border-radius: 7px;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+
+  img {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+
+  }
+
+  .star {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  ion-icon {
+    margin-right: 10px;
+    font-size: 18px;
+
+  }
+}
+

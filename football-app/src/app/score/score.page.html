@@ -1,0 +1,180 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <div class="header" (click)="closeCalendar()">
+    <ion-toggle (ionChange)="changeValue($event)"> </ion-toggle>
+    <ion-icon name="search" (click)="gotoSearch()"></ion-icon>
+  </div>
+  <ion-slides [options]="slideOpts" class="slides" (click)="closeCalendar()">
+    <ion-slide *ngFor="let item of bannerData">
+      <a [href]="item.url" class="image">
+        <img [src]="item.thumbnail" class="img-slide" />
+      </a>
+    </ion-slide>
+  </ion-slides>
+  <div class="list-day">
+    <ion-button
+      *ngFor="let item of listFiveDay; index as i"
+      [ngClass]="{'date-active': indexActive == i }"
+      (click)="changeDate(item, i)"
+      [disabled]="toggleBtn"
+      class="btn-calendar"
+    >
+      <ion-label
+        *ngIf="checkLanguage"
+        [ngClass]="{'item-mutual-active': indexActive == i }"
+        class="date-calendar"
+      >
+        {{item.date | date :'MM-dd'}}
+      </ion-label>
+      <ion-label
+        *ngIf="checkLanguage"
+        [ngClass]="{'item-mutual-active': indexActive == i }"
+        class="day-calendar"
+      >
+        {{item.date | date :'EEE'}}
+      </ion-label>
+      <ion-label
+        *ngIf="!checkLanguage"
+        [ngClass]="{'item-mutual-active': indexActive == i }"
+        class="date-calendar"
+      >
+        {{item.date | date :'dd-MM'}}
+      </ion-label>
+      <ion-label
+        *ngIf="!checkLanguage"
+        [ngClass]="{'item-mutual-active': indexActive == i }"
+        class="day-calendar"
+      >
+        {{item.dateVi }}
+      </ion-label>
+    </ion-button>
+    <ion-button
+      (click)="openCalendar()"
+      class="open-calendar"
+      [ngClass]="{'date-active-img': indexActive == 5}"
+      [disabled]="toggleBtn"
+    >
+      <ion-icon
+        [ngClass]="{'img-calendar-active': indexActive == 5}"
+        class="img-calendar"
+        name="calendar-clear-outline"
+      ></ion-icon>
+      <span
+        *ngIf="indexActive == 5"
+        [ngClass]="{'img-calendar-active': indexActive == 5}"
+        >{{dayOrther}}</span
+      >
+    </ion-button>
+  </div>
+  <ion-segment mode="ios" value="{{valueTab}}" swipeGesture="false">
+    <ion-segment-button value="all" class="all" (click)="changeTabsAll()">
+      <ion-label>{{dataLanguage.ALL}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button
+      value="my-team"
+      class="my-team"
+      (click)="changeTabsMyTeam()"
+    >
+      <ion-label>{{dataLanguage.MINE}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="calendar" *ngIf="hasCalendar">
+    <div class="wrapper-calendar">
+      <ion-buttons class="header-calendar">
+        <ion-icon (click)="prevMonth()" name="chevron-back-outline"> </ion-icon>
+        <span *ngIf="nameMonth >= 10" class="name-month"
+          >{{nameMonth}}-{{year}}</span
+        >
+        <span *ngIf="nameMonth < 10" class="name-month"
+          >0{{nameMonth}}-{{year}}</span
+        >
+        <ion-icon (click)="nextMonth()" name="chevron-forward-outline">
+        </ion-icon>
+      </ion-buttons>
+      <ion-buttons class="day-of-month">
+        <ion-buttons class="dates" *ngIf="checkLanguage">
+          <ion-label *ngFor="let i of DATES"> {{i.nameEng}}</ion-label>
+        </ion-buttons>
+        <ion-buttons class="dates" *ngIf="!checkLanguage">
+          <ion-label *ngFor="let i of DATES"> {{i.nameVie}}</ion-label>
+        </ion-buttons>
+        <ion-label
+          *ngFor="let item of daysofMonth"
+          class="day-in-month"
+          [style.margin-left]="item.day == '01'? item.mr:'0vw'"
+          (click)="chooseDay(item)"
+        >
+          <span class="day-item" [ngClass]="{'to-day': item.today == today }">
+            {{item.day}}
+          </span>
+          <!-- <span class="active" *ngIf="item.check"></span> -->
+        </ion-label>
+      </ion-buttons>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content (click)="closeCalendar()">
+  <ion-item-group *ngIf="tagNew == '2'">
+    <app-item [data]="listFinalAll" [label]="'false'"></app-item>
+  </ion-item-group>
+  <ion-item-group *ngIf="tagNew == '1'">
+    <app-item [data]="listFinalMine" [label]="'false'"></app-item>
+    <!-- <ion-item-group class ="not-data"*ngIf="listFinalMine.length == 0">
+        {{dataLanguage.NO_MATCH}}.
+      </ion-item-group> -->
+  </ion-item-group>
+  <ion-item-group *ngIf="tagNew == '4'">
+    <app-item [data]="listLiveFinalAll" [label]="'false'"></app-item>
+    <ion-item-group class="not-data" *ngIf="listLiveFinalAll.length == 0">
+      {{dataLanguage.NO_MATCH}}.
+    </ion-item-group>
+  </ion-item-group>
+  <ion-item-group *ngIf="tagNew == '3'">
+    <app-item [data]="listLiveFinalMine" [label]="'false'"></app-item>
+    <ion-item-group class="not-data" *ngIf="listLiveFinalMine.length == 0">
+      {{dataLanguage.NO_MATCH}}.
+    </ion-item-group>
+  </ion-item-group>
+
+  <ion-item-group
+    *ngIf="listFinalMine.length == 0 && tagNew == '1'"
+    [ngClass]="{'data-not-found-ios': device}"
+    class="data-not-found"
+  >
+    {{dataLanguage.SCORE_INTRODUCE}}
+  </ion-item-group>
+  <div
+    *ngIf="listFinalMine.length == 0 && tagNew == '1'"
+    class="icon-introduce"
+  ></div>
+
+  <ion-item-group
+    *ngIf="listFinalAll.length == 0 && tagNew == '2'"
+    [ngClass]="{'data-not-found-ios': device}"
+    class="data-not-found"
+  >
+    {{dataLanguage.SCORE_INTRODUCE}}
+  </ion-item-group>
+  <div
+    *ngIf="listFinalAll.length == 0 && tagNew == '2'"
+    class="icon-introduce"
+  ></div>
+</ion-content>
+<ion-buttons class="group-footer">
+  <div  [ngClass]="{'group-ios': device}" class="group-button group-active">
+    <img src="assets/icon/tab/score-act.svg" alt="" />
+    <ion-label>{{this.dataLanguage.SCORE}}</ion-label>
+  </div>
+  <div  [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('news')" *ngIf="newActive">
+    <img src="assets/icon/tab/news.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div  [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('favorite')">
+    <img src="assets/icon/tab/fav.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div  [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('setting-account')">
+    <img src="assets/icon/tab/set.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+</ion-buttons>

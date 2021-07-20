@@ -1,0 +1,87 @@
+
+  <app-header [headerCustom]="headerCustom"></app-header>
+
+<ion-content class="ion-padding overflow-scroll">
+
+  <ion-slides pager="true" #mySlide [options]="slideOpts" (ionSlideDidChange)="slideChanged()">
+    <ion-slide>
+      <div class="wrapper">
+        <span class="span-in-area">{{dataLanguage.IN_THE_AREA}}</span>
+        <div class="tours in-area">
+          <app-list-team [listInArea]="listInArea" [indexSlide]="indexSlide"></app-list-team>
+        </div>
+        <span>{{dataLanguage.MOST_POPULAR}}</span>
+        <div class="tours popular">
+          <app-list-team [listPopular]="listPopular" [indexSlide]="indexSlide"></app-list-team>
+        </div>
+      </div> 
+      <div class="footer">
+        <span class="tournaments-orthers" (click)="gotoLeagueOrther()">{{dataLanguage.OTHER_TOURNAMENTS}}<ion-icon
+            name="caret-forward-outline"></ion-icon></span>
+        <ion-button mode="ios" class="btn btn__org btn__cus" (click)="nextSlide()">
+          {{dataLanguage.NEXT}}
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+        <ion-button mode="ios" class="btn btn__skip" (click)="Skip()">{{dataLanguage.SKIP}}</ion-button>
+      </div>
+    </ion-slide>
+    <!-- slide 2 -->
+    <ion-slide>
+      <div class="wrapper">
+        <div class="tours in-area ion-margin-top in-area-height-auto">
+          <app-list-team [listTeam]="listTeam" [indexSlide]="indexSlide"></app-list-team>
+        </div>
+      </div>
+      <div class="footer">
+        <span class="tournaments-orthers" (click)="gotoTeamOrther()">{{dataLanguage.OTHER_FOOTBALL_TEAM}}<ion-icon
+            name="caret-forward-outline"></ion-icon></span>
+        <ion-button mode="ios" class="btn btn__org btn__cus" (click)="nextSlide()">
+          {{dataLanguage.NEXT}}
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+        <ion-button mode="ios" class="btn btn__skip" (click)="Skip()">{{dataLanguage.SKIP}}</ion-button>
+      </div>
+    </ion-slide>
+    <!-- slide 3 -->
+    <ion-slide>
+      <div class="wrapper">
+        <span class="span-in-area">{{dataLanguage.IN_THE_AREA}}</span>
+        <div class="tours in-area in-area-height-auto-3">
+          <ion-row *ngFor="let item of listPlayer; let i = index;">
+            <ion-col class="item item-player" size="6" *ngIf="i % 2 == 0"
+              (click)="toggleSubcrisePlayerEven(listPlayer[i])">
+              <img src="assets/img/football-player.png" alt="" class="player-img">
+              <ion-buttons>
+                <img class="star" [src]="listPlayer[i].img" alt="">
+                <span class="player-name two-line">{{listPlayer[i]?.player_name}}</span>
+                <span class="one-line position">{{listPlayer[i]?.player_type}}</span>
+              </ion-buttons>
+            </ion-col>
+            <ion-col class="item item-player" size="6" *ngIf="i % 2 == 0 && i !== listPlayer.length - 1"
+              (click)="toggleSubcrisePlayerOdd(listPlayer[i+1])">
+              <img src="assets/img/football-player.png" alt="" class="player-img">
+              <ion-buttons>
+                <img class="star" [src]="listPlayer[i+1]?.img" alt="">
+                <span class="player-name two-line">{{listPlayer[i+1]?.player_name}}</span>
+                <span class="one-line position">{{listPlayer[i+1]?.player_type}}</span>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="" *ngIf="listPlayer.length ==0">
+          {{dataLanguage.OTHER_INFORMATION}}
+        </div>
+      </div>
+      <div class="footer">
+        <span class="tournaments-orthers" (click)="goPlayerOrther()">{{dataLanguage.OTHER_FOOTBALL_PLAYER}}<ion-icon
+            name="caret-forward-outline"></ion-icon></span>
+
+        <ion-button mode="ios" class="btn btn__org btn__cus" (click)="nextSlide()">
+          {{dataLanguage.NEXT}}
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+        <ion-button mode="ios" class="btn btn__skip" (click)="Skip()"> {{dataLanguage.SKIP}} </ion-button>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

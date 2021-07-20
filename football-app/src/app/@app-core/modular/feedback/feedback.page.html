@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar class="ion-padding">
+    <span class="main-title">{{dataLanguage.FEEDBACK}}</span>
+    <span class="introduce"
+      >{{dataLanguage.FEEDBACK_CONTENT}}</span
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-textarea
+    [(ngModel)]="note"
+    name="note"
+    placeholder="{{dataLanguage.ENTER_FEEDBACK_CONTENT}}"
+    class="input"
+    (ionChange)="changeNote(note)"
+  ></ion-textarea>
+  <ion-button [disabled]="note == ''" mode="ios" (click)="setNote()">{{dataLanguage.SEND}}</ion-button>
+</ion-content>

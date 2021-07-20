@@ -1,0 +1,9 @@
+<div class="header-cover" [ngClass]="{'ios-mr-top': device}" [style.background]="headerCustom.background ? headerCustom.background : '#fff'" [style.color]="headerCustom.color ? headerCustom.color : '#424242'">
+  <ion-back-button
+    icon="chevron-back-outline"
+    mode="md"
+  ></ion-back-button>
+  <div class="header">
+    <ion-text>{{ headerCustom.title }}</ion-text>
+  </div>
+</div>

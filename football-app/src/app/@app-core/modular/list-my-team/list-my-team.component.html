@@ -1,0 +1,117 @@
+<ion-list>
+  <ion-item-group class="wrapper">
+    <div *ngFor="let list of data">
+      <div class="" *ngFor="let item of list">
+        <div class="" *ngFor="let i of item.content; index as in">
+          <div class="bg"></div>
+          <div class="league league_date group-list" *ngIf="in == 0 && label == 'true'&& !checkLanguage">
+            -- {{i[0].day}}, {{ i[0].match_date | date:'dd-MM-yyyy' }} -- <br />
+              
+              {{ item.count}} {{dataLanguage.MATCH}}
+          </div>
+          <div class="league league_date group-list" *ngIf="in == 0 && label == 'true' && checkLanguage">
+            <ion-label >
+              -- {{i[0].day}}, {{ i[0].match_date | date:'yyyy-MM-dd' }} --
+            </ion-label>
+            <ion-label >  {{ item.count}} {{dataLanguage.MATCH}}
+               <span *ngIf="item.count> 1 && checkLanguage" class="es">es</span>
+              </ion-label> 
+         
+          </div>
+
+          <div class="list-team"*ngFor="let m of i; index as c" [ngForTrackBy]="bannerCheck()">
+          
+          <ion-slides [options]="{initialSlide: index, loop: true, autoplay: true, centeredSlides: true }" 
+          *ngIf="showbanner && bannerData" >
+            <ion-slide *ngFor="let item of bannerData">
+              <a [href]="item.url" class="image">
+                <img [src]="item.thumbnail" class="img-slide"/>
+              </a>
+            </ion-slide>
+          </ion-slides>
+            <div class="league group-list league_name" *ngIf="c == 0">
+              <img [src]="m.league_logo" alt="" />
+              {{ m.league_name }}
+            </div>
+            <ion-item-group class="group-list" (click)="gotoDetail(m)">
+              <div class="group-left">
+                <!-- <img
+                  class="img-status"
+                  src="../../assets/img/played.svg"
+                  alt=""
+                  *ngIf="
+                    m.match_status == 'Finished' ||
+                    m.match_status == 'After ET' ||
+                    m.match_status == 'After Pen.'
+                  "
+                />
+                <img
+                  class="img-status"
+                  src="../../assets/img/playing.svg"
+                  alt=""
+                  *ngIf="m.match_live == '1' && m.match_status != 'Finished'"
+                />
+                <img
+                  class="img-status"
+                  src="../../assets/img/willplay.svg"
+                  alt=""
+                  *ngIf="m.match_status == '' || m.match_status == 'FRO'"
+                />
+                <img
+                  class="img-status"
+                  src="../../assets/img/cancle.svg"
+                  alt=""
+                  *ngIf="
+                    m.match_status == 'Cancelled' ||
+                    m.match_status == 'Postponed'
+                  "
+                /> -->
+
+                <span class="two-line name-left"
+                  >{{ m.match_awayteam_name }}
+                  <br />
+                  <!-- <span class="one-line"> {{ m.league_name }}</span> -->
+                </span>
+                <img [src]="m.team_away_badge" alt="" class="flag" />
+              </div>
+              <div class="match-time">
+                <div class="time-score">
+                  <span
+                    class="score"
+                    *ngIf="m.match_status !== '' && m.match_status !== 'FRO'"
+                  >
+                    {{ m.match_awayteam_score }} -
+                    <!-- <img src="../../assets/img/set.svg" alt="" /> -->
+                    {{  m.match_hometeam_score }}
+                  </span>
+                  <span
+                    *ngIf="m.match_status == '' || m.match_status == 'FRO'"
+                    class="score"
+                    >{{timeConvert(m.match_time) }}</span
+                  >
+                </div>
+
+                <!-- <img
+            class="img-status"
+            src="../../assets/img/willplay.svg"
+            alt=""
+            *ngIf="m.match_status == '' || m.match_status == 'FRO'"
+          /> -->
+              </div>
+
+              <div class="group-right">
+                <img [src]="m.team_home_badge" alt="" class="flag" />
+                <span class="two-line name-right"
+                  >{{ m.match_hometeam_name }}
+                  <br />
+                  <!-- <span class="one-line"> {{ m.league_name }} </span> -->
+                </span>
+              </div>
+            </ion-item-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-item-group>
+</ion-list>
+<!-- *ngIf="data.length" -->

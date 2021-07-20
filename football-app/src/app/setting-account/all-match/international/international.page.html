@@ -1,0 +1,48 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content>
+  <ion-buttons
+    class="list-cover"
+    
+  >
+    <div *ngFor="let item of arrayCountryID " class="item-cover">
+      <ion-label *ngIf="item.arrayItem.length>0" class="text-main"> {{item.name}} </ion-label>
+      <div class="list-country-item">
+        <ion-buttons
+          *ngFor="let items of item.arrayLimit"
+          (click)="clickSub(items)"
+          class="country-item"
+        >
+          <p class="text-name">{{ items.league_name }}</p>
+          <i
+            class="fas fa-star sub-star"
+            [ngClass]="{'activeSub':items.subscribe}"
+          ></i>
+        </ion-buttons>
+        <p  *ngIf="item.arrayItem.length>2" (click)="showMore(item)" class="text-more">{{dataLanguage.SEE_MORE}} >></p>
+      </div>
+    </div>
+  </ion-buttons>
+  <!-- <ion-buttons
+    class="list-cover"
+    *ngIf="headerCustom.title == 'Câu lạc bộ Quốc tế' "
+  >
+    <div *ngFor="let item of arrayCountryID " class="item-cover">
+      <ion-label class="text-main"> {{item.name}} </ion-label>
+      <div class="list-country-item">
+        <ion-buttons
+          *ngFor="let items of item.arrayItem"
+          (click)="clickSub(items)"
+          class="country-item"
+        >
+          <p class="text-name">{{ items.league_name }}</p>
+          <i
+            class="fas fa-star sub-star"
+            [ngClass]="{'activeSub':items.subscribe}"
+          ></i>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-buttons> -->
+</ion-content>

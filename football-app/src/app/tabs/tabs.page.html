@@ -1,0 +1,15 @@
+<ion-tabs>
+  <ion-tab-bar slot="top"  [ngClass]="{'ios-mr-top': device}">
+    <ion-tab-button tab="match">
+      <ion-label>{{dataLanguage.MATCH}}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="news" *ngIf="newActive">
+      <ion-label> {{titleNew}}</ion-label>
+    </ion-tab-button>
+    <!-- <ion-tab-button tab="statistics">
+      <ion-label>{{dataLanguage.SPECIAL_DATA}}</ion-label>
+    </ion-tab-button> -->
+  </ion-tab-bar>
+
+</ion-tabs>

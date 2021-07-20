@@ -1,0 +1,18 @@
+<!-- <select  (change)="selectLanguage($event.target.value)" (change)="selectLanguage($event.target.value)" [(ngModel)]="choiceLanguage">
+    <option *ngFor="let item of arrLanguage" value="{{item}}">{{item}}</option>
+</select> -->
+
+<div class="container-country">
+    <ion-list class="list-country">
+      <ion-item *ngFor="let item of arrLanguage" (click)="selectLanguage(item)">
+        <ion-label>{{item}}</ion-label>
+        <ion-button [ngClass]="{'active-btn':item==idActive}" class="no-active ">
+  
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    <div class="footer-country">
+  
+    </div>
+  
+  </div>

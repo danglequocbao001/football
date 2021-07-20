@@ -1,0 +1,110 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <div class="header">
+    <ion-icon name="search" (click)="gotoSearch()"></ion-icon>
+  </div>
+  <ion-slides [options]="slideOpts" class="slides">
+    <ion-slide *ngFor="let item of bannerData">
+      <a [href]="item.url" class="image">
+        <img [src]="item.thumbnail" class="img-slide" />
+      </a>
+    </ion-slide>
+  </ion-slides>
+</ion-header>
+<ion-content class="ion-padding">
+  <div class="group team">
+    <ion-item-divider class="item-header">
+      <ion-text slot="start">{{dataLanguage.FAVORITE_LEAGUE}}</ion-text>
+      <!-- <ion-buttons slot="end" (click)="toggleAllLeagueClick()" >
+        <i [ngClass]="{'active-bell': checkAllLeague}" class="icon-bell fas fa-bell"></i>
+
+        <span [ngClass]="{'active-bell': checkAllLeague}">{{dataLanguage.TURN_ALL_ON}}</span>
+      </ion-buttons> -->
+    </ion-item-divider>
+    <ion-item-group class="group-team" *ngFor="let item of listLeague ">
+      <div class="item">
+        <img [src]="item.logo" alt="" />
+        {{item.name}}
+        <ion-toggle
+          [(ngModel)]="item.notification"
+          (ionChange)="myChangeLeague(item)"
+        >
+        </ion-toggle>
+      </div>
+    </ion-item-group>
+    <ion-item-group class="add" (click)="goLeagueOrther()">
+      {{dataLanguage.MORE}} <img src="assets/img/add.svg" alt="" />
+    </ion-item-group>
+  </div>
+  <div class="group team">
+    <ion-item-divider class="item-header">
+      <ion-text slot="start">{{dataLanguage.FAVORITE_FOOTBALL_TEAM}}</ion-text>
+      <!-- <ion-buttons slot="end" (click)="toggleAllTeamClick()" >
+        <i [ngClass]="{'active-bell': checkAllTeam}" class="icon-bell fas fa-bell"></i>
+        <span [ngClass]="{'active-bell': checkAllTeam}">
+          {{dataLanguage.TURN_ALL_ON}}
+
+        </span>
+      </ion-buttons> -->
+    </ion-item-divider>
+    <ion-item-group class="group-team" *ngFor="let team of listTeam ">
+      <div class="item">
+        <img *ngIf="team.logo" [src]="team.logo" alt="" />
+        {{team.name}}
+        <ion-toggle
+          [(ngModel)]="team.notification"
+          (ionChange)="myChangeTeam(team)"
+        ></ion-toggle>
+      </div>
+    </ion-item-group>
+    <ion-item-group class="add" (click)="goTeamOrther()">
+      {{dataLanguage.MORE}} <img src="assets/img/add.svg" alt="" />
+    </ion-item-group>
+  </div>
+  <div class="group team">
+    <ion-item-divider class="item-header">
+      <ion-text slot="start">{{dataLanguage.FAVORITE_PLAYER}}</ion-text>
+      <!-- <ion-buttons slot="end" (click)="toggleAllPlayerClick()">
+        <i [ngClass]="{'active-bell': checkAllPlayer}" class="icon-bell fas fa-bell"></i>
+        <span [ngClass]="{'active-bell': checkAllPlayer}">{{dataLanguage.TURN_ALL_ON}}</span>
+      </ion-buttons> -->
+    </ion-item-divider>
+    <ion-item-group class="group-team" *ngFor="let item of listPlayer ">
+      <div class="item">
+        <div>
+          <img src="assets/img/match/player.svg" alt="" />
+          {{item.name}}
+        </div>
+
+        <ion-toggle
+          [(ngModel)]="item.notification"
+          (ionChange)="myChangePlayer(item)"
+        >
+        </ion-toggle>
+      </div>
+    </ion-item-group>
+    <ion-item-group class="add" (click)="goPlayerOrther()">
+      {{dataLanguage.MORE}} <img src="assets/img/add.svg" alt="" />
+    </ion-item-group>
+  </div>
+  <!-- <app-list-favorite [listTeam]="listTeam"[titleTeam]="'ĐỘI BÓNG ƯA THÍCH'" 
+  [listLeague]="listLeague" [titleLeague]="'GIẢI ĐẤU ƯA THÍCH'"
+  ></app-list-favorite> -->
+</ion-content>
+<ion-buttons class="group-footer">
+  <div [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('score')">
+    <img src="assets/icon/tab/score.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('news')" *ngIf="newActive">
+    <img src="assets/icon/tab/news.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button group-active">
+    <img src="assets/icon/tab/fav-act.svg" alt="" />
+    <ion-label>{{this.dataLanguage.FAVOURITE}}</ion-label>
+  </div>
+  <div [ngClass]="{'group-ios': device}" class="group-button" (click)="gotoPage('setting-account')">
+    <img src="assets/icon/tab/set.svg" alt="" />
+    <ion-label></ion-label>
+  </div>
+</ion-buttons>

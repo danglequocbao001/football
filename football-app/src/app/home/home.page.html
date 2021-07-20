@@ -1,0 +1,27 @@
+<ion-content class="overflow-hidden"[ngClass]="{'ios-mr-top': device}" >
+  <div class="football__image" [ngClass]="{'football__image-ios': device}" >
+    <span class="live__title"> {{dataLanguage.LIVE_SCORE}} </span>
+  </div>
+  <ion-item-group class="footer choose-country"> </ion-item-group>
+  <ion-item-group class="footer ion-padding">
+    <ion-label>{{dataLanguage.SELECT_LEAGUE_BY_COUNTRY}}</ion-label>
+
+    <div class="countries" (click)="selectedCountry()">
+      <img [src]="itemCountry?.country_logo" alt="" />
+      <ion-label class="text-country">
+        {{itemCountry?.country_name}}
+      </ion-label>
+      <ion-icon name="caret-down-outline"></ion-icon>
+    </div>
+    <ion-label>{{dataLanguage.SELECT_APP_LANGUAGE}}</ion-label>
+    <div class="language" (click)="selectLanguage()">
+      <img src="assets/img/language.svg" alt="" />
+      <ion-label class="text-country"> {{selectedLanguage}} </ion-label>
+      <ion-icon name="caret-down-outline"></ion-icon>
+    </div>
+  </ion-item-group>
+  <ion-button mode="ios" class="btn btn__org_home" (click)="gotoTournaments()">
+    {{dataLanguage.NEXT}}
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </ion-button>
+</ion-content>

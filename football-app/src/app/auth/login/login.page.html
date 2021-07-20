@@ -1,0 +1,51 @@
+<ion-content >
+  <div class="football__image">
+    <ion-img [ngClass]="{'ios-mr-top': device}"  class="btn__back" src="../../../assets/icon/back.svg" (click)="back()"></ion-img>
+    <div class="white-space">
+      <div class="form__login">
+        <ion-text class="title">{{dataLanguage.LOGIN}}</ion-text>
+        <form class="component-collection" [formGroup]="profileForm">
+          <ion-item-group class="component">
+            <ion-text>{{dataLanguage.EMAIL}}</ion-text>
+            <ion-input formControlName="email" placeholder="{{dataLanguage.EMAIL}}"></ion-input>
+          </ion-item-group>
+          <ion-item-group class="component">
+            <ion-text>{{dataLanguage.PASSWORD}}</ion-text>
+            <!-- <ion-input [type]="value" placeholder="Mật khẩu của bạn" formControlName="password" type="password">
+              <ion-img   (click)="changeEye()" class="show-password" src="../../../assets/icon/show-password.svg"></ion-img>
+            </ion-input> -->
+            <ion-input class="input" type="{{type}}" placeholder="{{dataLanguage.PASSWORD}}"  formControlName="password"></ion-input>
+            <ion-icon class="show-password" name="{{name}}" (click)="showPass()"></ion-icon>
+          </ion-item-group>
+        </form>
+
+        <ion-text class="forget-password" (click)="forgotPassword()">{{dataLanguage.FOR_PASS}}</ion-text>
+        <br />
+        <ion-button class=" ion-no-padding btn__next" (click)="onSubmit()" [disabled]="showSpinner">{{dataLanguage.NEXT}}
+        </ion-button>
+        <br />
+        <ion-text class="signup" (click)="signup()">{{dataLanguage.SIGN_UP}}</ion-text>
+      </div>
+
+      <div class="login-method">
+        <ion-row>
+          <ion-col class="ion-no-padding" size="3">
+            <div class="line"> </div>
+          </ion-col>
+          <ion-col class="ion-text-center ion-justify-content-start" size="6">
+            <ion-text class="login-method-divider">{{dataLanguage.CON_BY}}</ion-text>
+          </ion-col>
+          <ion-col class="ion-no-padding" size="3">
+            <div class="line"> </div>
+          </ion-col>
+        </ion-row>
+
+        <div class="login-row">
+          <ion-img src="../../../assets/icon/login-google.svg"></ion-img>
+          <ion-img src="../../../assets/icon/login-facebook.svg" (click)="loginViaFacebook()"></ion-img>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,205 @@
+.img-background{
+  height: 25vh;
+  background-image: url("../../assets/img/ronadio.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  .btn__back{
+    width: 10px;
+    display: absolute;
+    padding-top: 25px;
+    margin-left: 17px;
+    
+  }
+  .name{
+    margin-top: 10vh;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;   
+  }
+  .position{
+    font-size: 14px;
+    font-weight: 400;
+    color: #fff;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+ion-segment{
+  margin-top: 7px;
+  height: 6vh;
+  background-color: #e5e5e5;
+  ion-segment-button{
+    --indicator-color: #FCB441;
+    --border-radius: 15px 15px 0 0;
+    
+    font-size: 16px;
+    font-weight: 600;
+    --color: #9b9b9b;
+    --color-checked: #fff;
+  }
+}
+.item{
+  margin-bottom: 16px;
+  
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  .line-divider{
+    border-right: 1px solid #cccccc;
+  }
+  .title{
+    background-color: #FFF9E1;
+    color: #fcb441;
+    width: 100%;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 0px 5px 12px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  }
+  .sub-element{
+    width: 60%;
+    margin-left: 20%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    .main{
+      font-size: 14px;
+    }
+    .sub{
+      font-size: 12px;
+      color: #9b9b9b;
+    }
+  }
+  .sub-element-2:first-child{
+    border-bottom: 1px solid #cccc;
+  }
+  .sub-element-2{
+    height: 50%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    align-items: center;
+    ion-img{
+      width: 42px;
+      height: 42px;
+    }
+    .main{
+      font-size: 14px;
+    }
+    .sub{
+      font-size: 12px;
+      color: #9b9b9b;
+    }
+  }
+}
+.container{
+  .first-line{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 17px;
+    .position{
+      height: 20px;
+      width: 20px;
+    }
+    .position-text{
+      font-size: 12px;
+      color: #545454;
+    }
+  }
+  .sub-element-3{
+    background: #F2F2F2;
+    border-radius: 7px;
+    padding: 10px 10px 10px 10 px;
+    margin: 7px;
+    margin-bottom:0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    ion-img{
+      width: 25px;
+      height: 25px;
+    }
+    .main{
+      font-size: 14px;
+    }
+    .sub{
+      font-size: 12px;
+      color: #9b9b9b;
+    }
+  }
+  .sub-element-3:first-child{
+    margin-right: 0;
+  }
+  .detail{
+    padding-bottom: 5px;
+    
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: underline;
+    color: #2C28FC;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
+.history-detail{
+  width: 90%;
+  margin-left: 5%;
+  // margin-top: 10px;
+  .text{
+    .main{
+      color: #565656;
+      font-size: 14px;
+    }
+    .sub{
+      font-size: 12px;
+      color: #9B9B9B;
+    }
+  }
+  .price{
+    color: #10cc00;
+    padding-top: 50%;
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .divider{
+    width: 10px;
+  }
+  .club{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    ion-img{
+      width: 15px;
+      height: 15px;
+    }
+    ion-text{
+      font-size: 14px;
+      color: #565656;
+      margin-left: 5px;
+    }
+  }
+}

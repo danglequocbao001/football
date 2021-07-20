@@ -1,0 +1,42 @@
+<div *ngFor="let list of data" class="list-match">
+  <ion-item-group class="display-flex item league">
+    <img onerror="this.src='../../assets/icon/banthang.svg'" [src]="list[0].league_logo" alt="" class="img-league" />
+    <span class="two-line">{{ list[0].league_name }}</span>
+  </ion-item-group>
+
+  <div
+    *ngFor="let item of list"
+    (click)="gotoDetail(item)"
+    [ngForTrackBy]="bannerCheck()"
+  >
+     
+    <ion-slides [options]="{initialSlide: index, loop: true, autoplay: true, centeredSlides: true }" 
+    *ngIf="showbanner && bannerData && showbannerIos" >
+      <ion-slide *ngFor="let i of bannerData">
+        <a [href]="i.url" class="image">
+          <img [src]="i.thumbnail" class="img-slide"/>
+        </a>
+      </ion-slide>
+    </ion-slides>
+    <div class="display-flex item match">
+      <ion-item-group class="team team-home">
+        <img [src]="item.imgStatus" alt="" class="img-status" />
+        <span class="name two-line">{{ item.match_hometeam_name }}</span>
+        <img [src]="item.team_home_badge" alt="" class="img-team img-team-home" />
+      </ion-item-group>
+      <span class="score"  *ngIf="item.status != 'will-play'">
+        {{ item.match_hometeam_score }}
+        <img src="assets/img/set.svg" alt="" />
+        {{ item.match_awayteam_score }}
+      </span>
+      <span class="score time" *ngIf="item.status == 'will-play'">
+      {{ timeConvert(item.match_time) }} 
+      </span>
+      <ion-item-group class="team team-away">
+        <img [src]="item.team_away_badge" alt="" class="img-team img-team-away" />
+        <span class="two-line name">{{ item.match_awayteam_name }}</span>
+      </ion-item-group>
+    </div>
+   
+  </div>
+</div>

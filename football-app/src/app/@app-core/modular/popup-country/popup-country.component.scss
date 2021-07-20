@@ -1,0 +1,31 @@
+.no-active {
+  --border-radius: 100%;
+  width: 25px;
+  height: 25px;
+  --background: transparent;
+  border: 1px solid #fcb441;
+  box-sizing: border-box;
+  border-radius: 3px;
+  --background-activated: #fcb441;
+  padding: 5px;
+  transition: all 2s linear;
+}
+.container-country {
+  height: 100%;
+  .list-country {
+    height: 100%;
+    overflow: scroll;
+    ion-label {
+      font-family: "Saira", sans-serif;
+    }
+    img {
+      width: 2vh;
+      height: 2vh;
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+  }
+}
+.active-btn {
+  --background: #fcb441;
+}

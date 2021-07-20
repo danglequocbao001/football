@@ -1,0 +1,37 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content>
+  <div class="divider">
+    <ion-text class="title">{{dataLanguage.INTERNATIONAL}}</ion-text>
+    <ion-row *ngFor="let item of ArrayTeam" (click)="gotoUrl(item)" class="item ion-no-padding">
+      <ion-col size="1">
+        <ion-img src="../../../assets/icon/allmatch/world.svg"></ion-img>
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>{{item.title}}</ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img class="arrow" src="../../../assets/icon/setting-account/arrow.svg"></ion-img>
+      </ion-col>
+    </ion-row>
+ 
+  </div>
+
+  <div class="divider">
+    <ion-text class="title">{{dataLanguage.NA_AR_A_Z}}</ion-text>
+
+    <ion-row *ngFor="let country of countries" class="item ion-no-padding" (click)="gotoDetail(country)">
+      <ion-col size="1">
+        <img *ngIf="country.country_logo == ''" src="../../../assets/icon/allmatch/world.svg" />
+        <img class="logo" *ngIf="country.country_logo !== ''" [src]="country.country_logo" />
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>{{country.country_name}}</ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <ion-img class="arrow" src="../../../assets/icon/setting-account/arrow.svg"></ion-img>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

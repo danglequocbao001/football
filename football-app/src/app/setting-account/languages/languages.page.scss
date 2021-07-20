@@ -1,0 +1,43 @@
+ion-content {
+  --padding-top: 2vh;
+  --background: #fff;
+}
+
+.item {
+  --background: var(--white-not-change);
+  border-bottom: 1px solid rgb(230, 230, 230) ;
+  border-bottom-width: 80%;
+  &::part(native) {
+    padding-left: 0;
+  }
+
+  .label {
+    font-size: 18px;
+    color: #828282;
+  }
+
+
+}
+
+.radio {
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
+  border: 1px solid #ccbda4;
+  padding: 4px;
+  --color-checked: #fff;
+  --color: #fff;
+  
+}
+.activeRadio {
+  background: #fcb441;
+}
+
+.confirm {
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  width: 15vh;
+  --background: #fcb441;
+  --background-activated: #fcb365;
+}

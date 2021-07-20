@@ -1,0 +1,23 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-radio-group mode="ios" class="list" [value]="activeLanguage">
+    <ion-item
+      *ngFor="let language of languages"
+      class="item"
+      (click)="setLanguage(language.name)"
+     lines="none"
+    >
+      <ion-label class="label">{{ language.name }}</ion-label>
+      <ion-radio
+        [ngClass]="{'activeRadio': language.name == activeLanguage}"
+        class="radio"
+        [value] ="language.name"
+      >
+      </ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  <ion-button mode="ios" (click)="confirm()" class="confirm">{{dataLanguage.CONFIRM}}</ion-button>
+</ion-content>

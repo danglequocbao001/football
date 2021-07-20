@@ -1,0 +1,809 @@
+ion-label {
+  font-family: "Saira", sans-serif !important;
+}
+
+ion-header {
+  height: 140px;
+  background-color: var(--white-not-change);
+  ion-back-button {
+    display: block;
+    height: 60px;
+    padding-top: 5px;
+    width: 60px;
+    color: var(--grayA5-color);
+    z-index: 11;
+    left: -6px;
+    position: absolute;
+  }
+
+  ion-toolbar {
+    height: 70px;
+    display: flex;
+
+    ion-title {
+      font-size: 14px;
+      padding: 0;
+      color: #565656;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+
+  .group-team {
+    display: flex;
+    margin: 16px 31px 0 31px;
+
+    ion-buttons {
+      width: 50%;
+      color: var(--orange-color);
+      display: block;
+      text-align: center;
+
+      p {
+        margin: 0;
+        font-size: 14px
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+      .img-share {
+        width: 20px;
+        height: 19px;
+      }
+
+      .set {
+        width: 8px;
+        height: 23px;
+      }
+
+      .score-team {
+        width: 107px;
+        height: 32px;
+        color: #10CC00;
+        display: flex;
+        justify-content: space-around;
+        font-size: 24px;
+        align-items: center;
+        position: relative;
+        margin: 2px auto;
+        padding: 0;
+        border-radius: 3px;
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+
+      }
+
+      .group-date-time {
+        display: flex;
+        width: 90px;
+
+        p {
+          margin: 5px 0;
+          font-size: 11px;
+        }
+      }
+
+    }
+
+    .score {
+      width: 100%;
+      font-size: 12px;
+      color: #000000;
+      text-align: center;
+      position: relative;
+      .status {
+        position: relative;
+      }
+      .img_status {
+        width: 15px;
+        position: absolute;
+        height: 15px;
+        bottom: -5.5px;
+        transform: translateX(-50%);
+        left: 50%;
+      }
+      .time-playing {
+        margin-top: 12px;
+        color: #10CC00;
+        font-size: 13px !important;
+      }
+      .day {
+        line-height: 7px;
+         margin-top: 12px;
+         font-size: 13px;
+      }
+
+      .label {
+        height: 16px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .share {
+    position: fixed;
+    top: 35px;
+    right: 10px;
+  }
+}
+
+ion-content {
+  --background: var(--white-not-change);
+  // --overflow: hidden;
+  .list-option {
+    height: 50px;
+    margin-top: 40px;
+    display: inline-flex;
+    z-index: 11;
+    background-color: #fff;
+    width: 100%;
+    // position: fixed;
+    align-items: center;
+    justify-content: space-around;
+
+    ion-item-group {
+      color: #9b9b9b;
+      font-size: 14px;
+      text-align: center;
+      background-color: var(--white-not-change);
+      ion-buttons {
+        color: #a3a3a3;
+        min-width: 66px;
+        min-height: 29px;
+        justify-content: center;
+        text-align: center;
+        padding: 4px 8px;
+        margin-bottom: 2px;
+        background-color: #f4f4f4;
+        border-radius: 4px;
+
+        img {
+          margin-right: 3px;
+        }
+      }
+
+      .active {
+        background-color: var(--orange-color);
+        min-width: 66px;
+        justify-content: center;
+        text-align: center;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+
+  ion-slides {
+    // margin-top: 114px;
+    --overflow: scroll;
+
+    ion-slide {
+      ion-segment {
+        position: fixed;
+        top: 0;
+        background-color: var(--orange-second);
+        border-radius: 0;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+        ion-text {
+          width: 40%;
+          margin-left: 20px;
+          align-items: center;
+          font-weight: 550;
+          font-size: 12px;
+          display: flex;
+          color: var(--orange-color);
+        }
+
+        ion-button {
+          .footer_under {
+            position: absolute;
+            content: "";
+            width: 100%;
+            left: 0;
+            bottom: 0px;
+            height: 4px;
+            border-radius: 6px;
+            background: var(--orange-color);
+          }
+
+          font-size: 15px;
+          min-width: 120px;
+          --padding-start: 0;
+          --background-activated: transparent;
+          --background-focused: transparent;
+          --background-hover: transparent;
+          --color: #9b9b9b;
+          --background: var(--orange-second);
+          text-align: left;
+          max-height: 30px;
+          --border-radius: 0;
+          margin: 0;
+        }
+
+        .show {
+          --color: var(--orange-color);
+        }
+      }
+
+      .wrapper {
+        width: 100%;
+        margin-bottom: 20px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+        ion-router-link {
+          font-size: 12px;
+          // border-bottom: 1px solid var(--ion-color-primary);
+        }
+
+        .content {
+          margin-top: 12px;
+
+          .sequence {
+            display: flex;
+            justify-content: space-between !important;
+            height: 20px;
+            .text-end {
+              color: var(--white-not-change);
+            }
+          
+          }
+
+          span {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            line-height: 20px;
+            background-color: #ff8e98;
+            width: 50%;
+            color: var(--white-color);
+          }
+
+          .sequence-score {
+            width: 30px;
+          }
+
+          ion-list {
+  
+            ion-item {
+              --background: var(--white-not-change);
+              span {
+                width: 108px !important;
+                background: #fff;
+                border: 2px solid #ccc;
+                border-radius: 4px;
+                margin: 0 4px;
+                color: #d62131;
+                font-weight: bold;
+                height: 25px;
+              }
+
+              ion-item-divider {
+                position: relative;
+                --padding-start: 0;
+                --padding-end: 0;
+                --inner-padding-end: 0;
+                background-color: #fff;
+                border-bottom: 0;
+
+                .text-right {
+                  margin-left: 35px !important;
+                }
+
+                .img-left {
+                  right: 8px;
+                }
+
+                .img-right {
+                  left: 6px;
+                }
+
+                ion-text {
+                  color: #565656;
+                  font-size: 13px;
+                  font-weight: normal;
+
+                  .sub {
+                    color: #10cc00;
+                    width: 78%;
+                  }
+
+                  ion-label {
+                    color: #6d6d6d;
+                    line-height: 9px;
+                    padding-top: 4px;
+                  }
+                }
+
+                img {
+                  position: absolute;
+                }
+              }
+            }
+          }
+        }
+
+        .statistis {
+          .title {
+            text-align: left;
+            font-size: 12px;
+            line-height: 26px;
+            font-weight: 550;
+            padding-left: 20px;
+            color: var(--orange-color);
+            background-color: #fff9e1;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+          }
+
+          .text {
+            color: #a5a5a5;
+            font-size: 14px;
+            font-weight: 550;
+            text-transform: uppercase;
+            margin-top: 14px;
+          }
+
+          .progress {
+            padding: 0 16px;
+
+            .progress-percent {
+              display: flex;
+              justify-content: space-between;
+            }
+
+            ion-progress-bar {
+              height: 28px;
+              --buffer-background: #d62131;
+              --progress-background: var(--orange-color);
+            }
+          }
+
+          .goal-attempts {
+            padding: 0 26px;
+
+            ion-progress-bar {
+              height: 10px;
+              width: 80%;
+              margin: 0 auto;
+            }
+
+            .wrapper-progress {
+              display: flex;
+              font-size: 14px;
+              color: var(--orange-color);
+            }
+          }
+        }
+
+        .rank {
+          .wrap-title {
+            display: flex;
+            height: 26px;
+            justify-content: space-between;
+
+            ion-label {
+              font-size: 12px;
+              line-height: 26px;
+              width: 50%;
+              font-weight: 550;
+              margin: 0;
+              color: var(--orange-color);
+              background-color: #fff9e1;
+            }
+
+            .group-score {
+              ion-label {
+                color: var(--orange-color);
+              }
+            }
+
+            .group-score-modify {
+              ion-label {
+                background-color: #fff;
+                color: #9b9b9b;
+                font-weight: normal;
+              }
+            }
+          }
+
+          ion-router-link {
+            font-size: 12px;
+          }
+
+          .ion-no-margin {
+            margin-bottom: 0;
+          }
+
+          .item {
+            --background: #fff;
+            color: #565656;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            --padding-start: 0;
+            --padding-end: 0;
+
+            ion-label {
+              font-size: 14px;
+              line-height: 26px;
+              width: 50%;
+              font-weight: 550;
+              margin: 0;
+              color: #565656;
+            }
+
+            .item-left {
+              display: flex;
+              justify-content: flex-start;
+
+              img {
+                height: 24px;
+                width: 24px;
+                float: left;
+                border-radius: 50%;
+              }
+            }
+
+            .group-score-row {
+              ion-label {
+                color: #565656 !important;
+              }
+            }
+
+            .group-score-rank {
+              ion-label {
+                font-weight: normal;
+                color: #565656 !important;
+              }
+            }
+          }
+
+          .item-info-match {
+            ion-item-divider {
+              --border-style: none;
+              border: 0;
+
+              img {
+                margin: 0 12px;
+              }
+            }
+          }
+        }
+      }
+
+      ion-item-group {
+        display: block;
+        text-align: center;
+
+        .bg {
+          background-repeat: no-repeat !important;
+          background-size: cover !important;
+          height: 216px !important;
+          margin-bottom: 14px;
+        }
+
+        ion-label {
+          font-size: 13px;
+          margin-bottom: 5px;
+          color: #002d63;
+          font-weight: 500;
+        }
+
+        span {
+          display: block;
+          text-align: justify;
+
+          color: #969696;
+          font-size: 12px;
+          padding: 6px 0;
+          margin-left: 5px;
+          background-color: #e5e5e5;
+        }
+      }
+
+      .segement-news {
+        margin-top: 30px;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+
+      .home {
+        width: 100%;
+        margin-top: 30px;
+
+        .wrapper {
+          margin-bottom: 20px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+          ion-router-link {
+            font-size: 12px;
+            // border-bottom: 1px solid var(--ion-color-primary);
+          }
+
+          .content {
+            margin-top: 12px;
+
+            .sequence {
+              display: flex;
+              justify-content: space-between !important;
+              height: 20px;
+            }
+
+            span {
+              display: flex;
+              justify-content: center;
+              padding: 0;
+              line-height: 20px;
+              background-color: #ff8e98;
+              width: 50%;
+              color: var(--white-color);
+            }
+
+            .sequence-score {
+              width: 30px;
+            }
+
+            ion-list {
+              ion-item {
+                span {
+                  width: 100px !important;
+                  background: #fff;
+                  border: 2px solid #ccc;
+                  border-radius: 4px;
+                  margin: 0 4px;
+                  color: #d62131;
+                  font-weight: bold;
+                  height: 25px;
+                }
+
+                ion-item-divider {
+                  position: relative;
+                  --padding-start: 0;
+                  --padding-end: 0;
+                  --inner-padding-end: 0;
+                  background-color: #fff;
+                  border-bottom: 0;
+
+                  .text-right {
+                    margin-left: 28px;
+                  }
+
+                  ion-text {
+                    color: #565656;
+                    font-size: 13px;
+                    flex: 1;
+                    font-weight: normal;
+                  }
+
+                  img {
+                    position: absolute;
+                  }
+
+                  .img-left {
+                    right: 8px;
+                  }
+
+                  .img-right {
+                    left: 6px;
+                  }
+                }
+              }
+            }
+          }
+
+          .statistis {
+            .title {
+              text-align: left;
+              font-size: 12px;
+              line-height: 26px;
+              font-weight: 550;
+              padding-left: 20px;
+              color: var(--orange-color);
+              background-color: #fff9e1;
+              box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            }
+
+            .text {
+              color: #a5a5a5;
+              font-size: 14px;
+              font-weight: 550;
+              text-transform: uppercase;
+              margin-top: 14px;
+            }
+
+            .progress {
+              padding: 0 16px;
+
+              .progress-percent {
+                display: flex;
+                justify-content: space-between;
+              }
+
+              ion-progress-bar {
+                height: 28px;
+                --buffer-background: #d62131;
+                --progress-background: var(--orange-color);
+              }
+            }
+
+            .goal-attempts {
+              padding: 0 26px;
+
+              ion-progress-bar {
+                height: 10px;
+                width: 80%;
+                margin: 0 auto;
+              }
+
+              .wrapper-progress {
+                display: flex;
+                font-size: 14px;
+                color: var(--orange-color);
+              }
+            }
+          }
+
+          .rank {
+            .wrap-title {
+              display: flex;
+              height: 26px;
+              justify-content: space-between;
+
+              ion-label {
+                font-size: 12px;
+                line-height: 26px;
+                width: 50%;
+                font-weight: 550;
+                margin: 0;
+                color: var(--orange-color);
+                background-color: #fff9e1;
+              }
+
+              .group-score {
+                ion-label {
+                  color: var(--orange-color);
+                }
+              }
+            }
+
+            ion-router-link {
+              font-size: 12px;
+            }
+
+            .ion-no-margin {
+              margin-bottom: 0;
+            }
+
+            .item {
+              --background: #fff;
+              color: #565656;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              --padding-start: 0;
+              --padding-end: 0;
+              --inner-padding-end: 0;
+
+              ion-label {
+                font-size: 14px;
+                line-height: 26px;
+                width: 50%;
+                font-weight: 550;
+                margin: 0;
+                color: #565656;
+              }
+
+              .item-left {
+                display: flex;
+                justify-content: space-evenly;
+
+                img {
+                  height: 24px;
+                  width: 24px;
+                  border-radius: 50%;
+                }
+              }
+
+              .group-score-row {
+                ion-label {
+                  color: #565656;
+                }
+              }
+            }
+
+            .item-rank {
+              --background: #e5e5e5 !important;
+              --padding-start: 10px;
+              --padding-end: 10px;
+              --inner-padding-end: 0;
+            }
+
+            .item-info-match {
+              ion-item-divider {
+                --border-style: none;
+                border: 0;
+
+                img {
+                  margin: 0 12px;
+                }
+              }
+            }
+          }
+        }
+
+        .ion-no-margin {
+          margin-bottom: 0;
+        }
+
+        .no-box-shadow {
+          box-shadow: none !important;
+        }
+      }
+
+      .team {
+        ion-label {
+          text-align: left;
+          color: #9b9b9b;
+          padding-left: 20px;
+          margin-top: 13px;
+        }
+
+        ion-list {
+          ion-item {
+            --background: #f2f2f2;
+
+            .number {
+              color: var(--orange-color);
+              margin: 0 10px;
+              width: 20px;
+              font-weight: 550;
+              background: none;
+            }
+
+            .name,
+            .coach {
+              color: #565656;
+              background: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.rank_position {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px !important;
+  line-height: 22px;
+  text-align: center;
+  min-width: 65px;
+  max-width: 65px;
+  // transform: translateX(-25%);
+}
+
+.top_c1 {
+  color: #10cc00 !important;
+}
+
+.top_c2 {
+  color: #13a4e7 !important;
+}
+
+.top_down {
+  color: #d62131 !important;
+}
+
+.slider-pager {
+  display: none;
+}
+
+.swiper-pagination-bullets {
+  display: none !important;
+}

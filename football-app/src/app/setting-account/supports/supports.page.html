@@ -1,0 +1,27 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+<ion-content>
+  <app-search-bar-nav></app-search-bar-nav>
+  <ion-buttons class="qna-cover ion-padding" *ngIf="questions.length > 0">
+    <ion-label class="main-title">{{dataLanguage.FRE_QUES}}</ion-label>
+    <ion-buttons
+      class="question-cover"
+      *ngFor="let question of questions"
+      (click)="getAnswer(question.answer)"
+    >
+      <ion-buttons class="question">
+        {{ question.question }}
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-buttons>
+    </ion-buttons>
+  </ion-buttons>
+</ion-content>
+
+<div class="background-cover">
+  <div class="background">
+    <img src="../../../assets/img/anabackground.png" alt="" srcset="" />
+  </div>
+</div>
+
+

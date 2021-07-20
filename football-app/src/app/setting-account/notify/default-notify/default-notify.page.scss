@@ -1,0 +1,72 @@
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+.list-noti {
+    flex-direction: column;
+    align-items: flex-start;
+    --background: var(--white-not-change);
+    .name-noti {
+        font-size: 14px;
+        line-height: 22px;
+        color: #9b9b9b;
+        margin-left: 25px;
+    }
+    .item-noti {
+        --background: var(--white-not-change);
+        flex-direction: column;
+        width: 100vw;
+        align-items: flex-start;
+        position: relative;
+        margin: 3px 0;
+        .name-detail {
+            color: var(--back-not-change);
+        }
+        .tick-item {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #fcb441;
+            box-sizing: border-box;
+            border-radius: 3px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform: translate(-50%, 50%);
+            --color-checked: white;
+        }
+    }
+}
+.activeRadio {
+    background: #fcb441;
+    position: relative;
+    //
+    .check {
+        color: white;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(30%, 30%);
+    }
+}
+.activeSound {
+    .i-sound {
+        color: #fcb441!important;
+    }
+}
+.sound-item {
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 20%;
+    top: 0;
+    transform: translate(-50%, 50%);
+    --color-checked: white;
+    .i-sound {
+        font-size: 4vh;
+        color: #a3a3a3;
+        
+    }
+}
+ion-content {
+    --background: var(--white-not-change);
+}

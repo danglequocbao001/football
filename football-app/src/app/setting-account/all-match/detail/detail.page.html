@@ -1,0 +1,30 @@
+<!-- <ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header> -->
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <!-- <ion class="back" src="../../../assets/icon/back.svg" (click)="back()"></ion> -->
+  <ion-back-button
+  icon="chevron-back-outline"
+  mode="md"
+></ion-back-button>
+  <div class="header">
+    <img [src]="country.country_logo"/>
+    <ion-text>{{country.country_name}}</ion-text>
+    </div>
+  
+</ion-header>
+<ion-content *ngIf="datas">
+  <div class="divider">
+    <ion-text class="title">{{dataLanguage.ALL_LEAGUE}}</ion-text>
+    
+    <ion-row *ngFor="let data of datas" class="item ion-no-padding" (click)="changeStatus(data.league_id, data)">
+      <ion-col size="10">
+        <ion-text>{{data.league_name}}</ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <img *ngIf="!data.subscribe" class="arrow" src="../../../../assets/icon/allmatch/uncheck.svg">
+        <img *ngIf="data.subscribe" class="arrow" src="../../../../assets/icon/allmatch/checked.svg">
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

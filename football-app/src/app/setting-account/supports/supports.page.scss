@@ -1,0 +1,44 @@
+ion-content {
+  --overflow: hidden;
+  --background: var(--grayE5-color);
+
+  .qna-cover {
+    display: block;
+
+    .main-title {
+      color: #fff;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .question-cover {
+      margin-bottom: 5px;
+      .question {
+        color: #565656;
+        background-color: rgba(242, 242, 242, 0.9);
+        padding: 1.5vh 1vh;
+        border-radius: 10px;
+        flex: 1;
+        justify-content: space-between;
+      }
+    }
+  }
+}
+
+.background-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.8;
+  .background {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    img{
+      object-fit: contain;
+      width: 100%;
+    }
+  }
+}

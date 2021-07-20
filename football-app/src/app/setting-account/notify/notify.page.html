@@ -1,0 +1,41 @@
+<ion-header>
+  <app-header [headerCustom]="headerCustom"></app-header>
+</ion-header>
+
+<ion-content>
+  <ion-buttons class="item ion-no-padding" routerLink="default-notify">
+    <ion-col size="10">
+      <ion-text>{{dataLanguage.DEFAULT_NOTIFY}}</ion-text>
+    </ion-col>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </ion-buttons>
+
+  <ion-row class="item ion-no-padding">
+    <ion-col size="10">
+      <ion-text>{{dataLanguage.TURN_ALL_NOTIFY}}</ion-text>
+    </ion-col>
+    <ion-toggle (click)="turnOnAll()"></ion-toggle>
+  </ion-row>
+
+  <ion-row class="item2 ion-no-padding">
+    <ion-col size="10">
+      <ion-text>{{dataLanguage.NEWS_NOTIFICATION}}</ion-text>
+    </ion-col>
+    <ion-toggle checked="{{checked}}"></ion-toggle>
+  </ion-row>
+
+  <ion-row class="item2 ion-no-padding">
+    <ion-col size="10">
+      <ion-text>{{dataLanguage.ALARM_TONE}}</ion-text>
+    </ion-col>
+    <ion-toggle checked="{{checked}}"></ion-toggle>
+  </ion-row>
+
+  <!-- <ion-row class="item ion-no-padding">
+    <ion-col size="10">
+      <ion-text>{{dataLanguage.DARK_MODE}}</ion-text>
+    </ion-col>
+    <ion-toggle></ion-toggle>
+    
+  </ion-row> -->
+</ion-content>

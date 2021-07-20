@@ -1,0 +1,569 @@
+<ion-header [ngClass]="{'ios-mr-top': device}">
+  <ion-back-button (click)="goBack()" icon="chevron-back-outline" text="" class="back-btn">
+  </ion-back-button>
+  <div class="group-team" *ngFor="let i of match">
+    <ion-buttons>
+      <img [src]="i.team_home_badge" alt="" />
+      <p class="text-color two-line">{{i.match_hometeam_name}}</p>
+    </ion-buttons>
+    <ion-buttons class="score ">
+      <span class="text-color one-line label"> {{i.league_name}}</span>
+      <span *ngIf="i.match_round !=''" class="text-color one-line label"> {{convertRound(i.match_round)}}</span>
+
+      <!-- Trận đang đã diễn ra hoặc đang diễn ra: show tỉ số -->
+      <span class="score-team" *ngIf="i.status=='played'|| i.status =='playing'" style="color: #FCB441;
+      ">
+        {{i.match_hometeam_score}}
+        <img src="assets/img/set.svg" alt="" class="set" />
+        {{i.match_awayteam_score}}
+      </span>
+      <!-- Đối những trân sắp diễn or cancle:  ra show thời gian sắp diễn ra của trận đấu-->
+      <span class="score-team" *ngIf="i.status == 'will-play' || i.status == 'cancle'">
+        {{timeConvert(i.match_time)}}
+      </span>
+      <!-- Đối những trận đang diễn ra: show số phút hiện tại của hiệp đấu  -->
+    
+      <div class="status">
+        <img onerror="this.src='../../assets/icon/banthang.svg'" [src]="i.imgStatus" alt="" class="img_status" />
+      </div>
+      <p   *ngIf="i.status =='playing'" class="day time-playing">
+        {{i.match_status}}'
+      </p>
+      <p class="day" >{{timeConvert(i.match_time)}}, {{convertDay(i.match_date)}}</p>
+    
+    </ion-buttons>
+    <ion-buttons>
+      <img [src]="i.team_away_badge" alt="" />
+      <p class="text-color two-line" >{{i.match_awayteam_name}}</p>
+    </ion-buttons>
+  </div>
+</ion-header>
+
+<ion-content *ngFor="let m of match">
+  <ion-item-group class="list-option">
+    <ion-item-group (click)="change(slides,item)" *ngFor="let item of footerList; index as i"
+      [ngClass]="{'hidden': i == 2 && (m.match_status ==''||m.match_status =='FRO')}">
+      <ion-buttons [ngClass]="{'active': item.active == true}">
+        <img [src]="item.img" alt="" />
+      </ion-buttons>
+      {{item.title}}
+    </ion-item-group>
+  </ion-item-group>
+  <ion-slides [options]="slideOpts" #slides (ionSlideDidChange)="slideChanged(slides)">
+    <ion-slide>
+      <ion-segment value="onTop" swipeGesture="false" mode="ios"
+      *ngIf="m.status=='played'|| m.status=='playing'">
+        <ion-text>{{dataLanguage.EVENT}}:</ion-text>
+        <ion-button value="onTop" class="onTop" (click)="changeTabs(true)" [ngClass]="{'show': tagNew}">
+          <ion-label>{{dataLanguage.TOP}}</ion-label>
+          <span class="footer_under" *ngIf="tagNew"></span>
+        </ion-button>
+        <!-- <ion-button value="all" class="all" (click)="changeTabs(false)" [ngClass]="{'show': !tagNew}">
+          <ion-label>{{dataLanguage.ALL}}</ion-label>
+          <span class="footer_under" *ngIf="!tagNew"></span>
+        </ion-button> -->
+      </ion-segment>
+      <ion-item-group class="home" *ngIf="tagNew">
+        <div *ngIf="m.status=='played'|| m.status=='playing'">
+          <div class="wrapper" *ngFor="let i of match">
+
+          
+            <ion-item-group class="content">
+              <div class="sequence-90 sequence">
+                <span class="text-end"> {{dataLanguage.END}}</span>
+                <span class="text-end sequence-score">{{i.match_hometeam_score}} - {{i.match_awayteam_score}}</span>
+                <span></span>
+              </div>
+              <ion-item-group class="content" *ngIf="
+              i.match_hometeam_penalty_score != ''&& i.match_awayteam_penalty_score!= ''">
+                <div class="sequence-penalty sequence">
+                  <span class="text-end">{{dataLanguage.PENALTY_KICK_RESULT}}</span>
+                  <span class="sequence-score text-end ">{{i.match_hometeam_extra_score}} - {{i.match_awayteam_extra_score}}</span>
+                  <span></span>
+                </div>
+                <div class="content-detail"></div>
+              </ion-item-group>
+              <!-- <ion-item-group class="content" *ngIf="i.match_awayteam_extra_score!=''&&i.match_hometeam_extra_score!=''">
+                <div class="sequence-extra sequence">
+                  <span class="text-end">{{dataLanguage.EXTRA_TIME}}</span>
+                  <span class="sequence-score text-end">{{i.match_hometeam_ft_score}} - {{i.match_awayteam_ft_score}}</span>
+                  <span></span>
+                </div>
+              </ion-item-group> -->
+              <ion-list lines="none">
+
+
+                <ion-item lines="none" *ngFor="let i of listGoalScorer90">
+                  <ion-item-divider >
+                    <ion-text class="text-left" *ngIf="i.home_scorer!=''">
+                      {{i.home_scorer}}
+                    </ion-text>
+                    <ion-text class="text-left" *ngIf="i.home_fault!=''">
+                      {{i.home_fault}}
+                    </ion-text>
+                    <ion-text class="text-left" *ngIf="i.info =='sub'&& i.home == true">
+                      <ion-label>
+                        {{i. substitution[0]}}
+                      </ion-label>
+                      <ion-label class="sub">
+                        {{i. substitution[1]}}
+                      </ion-label>
+                    </ion-text>
+                    <img [src]="i.imgSub" alt="" class="img-left" *ngIf="i.info =='sub'&& i.home == true" />
+
+                    <img [src]="i.imgScore" alt="" class="img-left"
+                      *ngIf="(i.score && i.home_scorer!='')||(i.score && i.info =='home')" />
+                    <img [src]="i.imgCard" alt="" class="img-left"
+                      *ngIf="(i.card !=''&& i.home_fault!='')||(i.card !='' && i.info =='home')" />
+                  </ion-item-divider>
+                  <span> {{i.time}}' </span>
+                  <ion-item-divider >
+                    <img [src]="i.imgScore" alt="" class="img-right"
+                      *ngIf="(i.score && i.away_scorer!='')||(i.score && i.info =='away')" />
+                    <img [src]="i.imgSub" alt="" class="img-right" *ngIf="i.info =='sub'&& i.away == true" />
+
+                    <img [src]="i.imgCard" alt="" class="img-right"
+                      *ngIf="(i.card !=''&& i.away_fault!='')||(i.card !='' && i.info =='away')" />
+                    <ion-text class="text-right" *ngIf="i.away_scorer!=''">
+                      {{i.away_scorer}}
+                    </ion-text>
+                    <ion-text class="text-right" *ngIf="i.away_fault!=''">
+                      {{i.away_fault}}
+                    </ion-text>
+                    <ion-text class="text-right" *ngIf="i.info =='sub'&& i.away == true">
+                      <ion-label>
+                        {{i. substitution[0]}}
+                      </ion-label>
+                      <ion-label class="sub one-line">
+                        {{i. substitution[1]}}
+                      </ion-label>
+                    </ion-text>
+
+                  </ion-item-divider>
+                </ion-item>
+              </ion-list>
+              <div *ngIf="listGoalScorer90.length==0 &&(i.match_hometeam_score != 0 && i.match_awayteam_score !=0)">
+                {{dataLanguage.UPDATING}}
+              </div>
+            </ion-item-group>
+            <ion-item-group class="content">
+              <div class="sequence-45 sequence">
+                <span class="text-end">{{dataLanguage.BREAK}}</span>
+                <span class="text-end sequence-score">{{i.match_hometeam_halftime_score}} -
+                  {{i.match_awayteam_halftime_score}}</span>
+                <span></span>
+              </div>
+              <ion-list lines="none">
+                <ion-item lines="none" *ngFor="let i of listGoalScorer45">
+                  <ion-item-divider>
+                    <ion-text class="text-left" *ngIf="i.home_scorer!=''">
+                      {{i.home_scorer}}
+                    </ion-text>
+                    <ion-text class="text-left" *ngIf="i.home_fault!=''">
+                      {{i.home_fault}}
+                    </ion-text>
+                    <ion-text class="text-left" *ngIf="i.info =='sub'&& i.home == true">
+                      <ion-label class="one-line">
+                        {{i. substitution[0]}}
+                      </ion-label>
+                      <ion-label class="sub one-line">
+                        {{i. substitution[1]}}
+                      </ion-label>
+                    </ion-text>
+                    <img [src]="i.imgSub" alt="" class="img-left" *ngIf="i.info =='sub'&& i.home == true" />
+
+                    <img [src]="i.imgScore" alt="" class="img-left"
+                      *ngIf="(i.score && i.home_scorer!='')||(i.score && i.info =='home')" />
+                    <img [src]="i.imgCard" alt="" class="img-left"
+                      *ngIf="(i.card !=''&& i.home_fault!='')||(i.card !='' && i.info =='home')" />
+                  </ion-item-divider>
+                  <span> {{i.time}}'</span>
+                  <ion-item-divider>
+                    <img [src]="i.imgScore" alt="" class="img-right" *ngIf="i.score && i.away_scorer!=''" />
+                    <img [src]="i.imgSub" alt="" class="img-right" *ngIf="i.info =='sub'&& i.away == true" />
+
+                    <img [src]="i.imgCard" alt="" class="img-right"
+                      *ngIf="(i.card !=''&& i.away_fault!='')||(i.card !='' && i.info =='away')" />
+                    <ion-text *ngIf="i.away_scorer!=''" class="text-right">
+                      {{i.away_scorer}}
+                    </ion-text>
+                    <ion-text *ngIf="i.away_fault!=''" class="text-right">
+                      {{i.away_fault}}
+                    </ion-text>
+                    <ion-text class="text-right" *ngIf="i.info =='sub'&& i.away == true">
+                      <ion-label class="one-line">
+                        {{i. substitution[0]}}
+                      </ion-label>
+                      <ion-label class="sub">
+                        {{i. substitution[1]}}
+                      </ion-label>
+                    </ion-text>
+                  </ion-item-divider>
+                </ion-item>
+              </ion-list>
+              <div
+                *ngIf="listGoalScorer45.length==0 && (i.match_hometeam_halftime_score != 0 && i.match_awayteam_halftime_score !=0)">
+                {{dataLanguage.UPDATING}}
+              </div>
+            </ion-item-group>
+          </div>
+
+          <div class="wrapper">
+            <ion-item-group class="statistis">
+              <ion-label class="title"> {{dataLanguage.DEVELOPMENTS}} </ion-label>
+              <div class="" *ngIf="listStatistics.length!=0">
+                <ion-item-group class="progress">
+                  <ion-label class="text"> {{dataLanguage.BALL_CONTROL}} </ion-label>
+                  <ion-text class="progress-percent">
+                    <ion-label> {{percentHomeFirst}}%</ion-label>
+                    <ion-label> {{percentAwayFirst}}%</ion-label>
+                  </ion-text>
+                  <ion-progress-bar [value]="valueHomeFirst"></ion-progress-bar>
+                </ion-item-group>
+                <ion-item-group class="progress goal-attempts">
+                  <ion-label class="text">
+                    {{dataLanguage.GOAL_ATTEMPT}}
+                  </ion-label>
+                  <div class="wrapper-progress">
+                    {{listStatistics[0]?.home}}
+                    <ion-progress-bar [value]="listStatistics[0]?.value"></ion-progress-bar>
+                    {{listStatistics[0]?.away}}
+                  </div>
+                </ion-item-group>
+                <ion-item-group class="progress goal-attempts">
+                  <ion-label class="text"> {{dataLanguage.COR_PEN}} </ion-label>
+                  <div class="wrapper-progress">
+                    {{listStatistics[4]?.home}}
+                    <ion-progress-bar [value]="listStatistics[4]?.value"></ion-progress-bar>
+                    {{listStatistics[4]?.away}}
+                  </div>
+                </ion-item-group>
+                <ion-router-link (click)="goDetailProgress(slides)">{{dataLanguage.SEE_MORE}}</ion-router-link>
+              </div>
+              <div *ngIf="listStatistics.length==0">{{dataLanguage.UPDATING}}</div>
+            </ion-item-group>
+
+          </div>
+        </div>
+
+        <div class="wrapper">
+          <ion-item-group class="rank">
+            <ion-label class="wrap-title">
+              <ion-label class="ion-text-start" style="padding-left: 20px">
+                {{dataLanguage.CURRENT_TABLE}}
+              </ion-label>
+              <ion-label class="">
+                <ion-item-group class="group-score">
+                  <ion-label> P </ion-label>
+                  <ion-label> F:A </ion-label>
+                  <ion-label> +/- </ion-label>
+                  <ion-label> PST </ion-label>
+                </ion-item-group>
+              </ion-label>
+            </ion-label>
+            <ion-item class="item" lines="none" *ngFor="let rank of twoFristRank">
+              <ion-label class="ion-text-start item-left">
+                <img *ngIf="rank.team_badge.length > 0" [src]="rank.team_badge" alt="" />
+                <span style="width: 71%; color: #565656;
+                background-color: #fff; margin-top: -6px;">{{rank.team_name}} </span>
+
+              </ion-label>
+              <ion-label>
+                <ion-item-group class="group-score group-score-row">
+                  <ion-label> {{rank.overall_league_payed}} </ion-label>
+                  <ion-label> {{rank.overall_league_W}}:{{rank.overall_league_L}} </ion-label>
+                  <ion-label> {{rank.GD}} </ion-label>
+                  <ion-label> {{rank.overall_league_PTS}} </ion-label>
+                </ion-item-group>
+              </ion-label>
+            </ion-item>
+            <ion-router-link *ngIf="twoFristRank.length!=0" (click)="gotoRank(slides)">{{dataLanguage.SEE_MORE}}
+            </ion-router-link>
+            <div *ngIf="twoFristRank.length==0">{{dataLanguage.UPDATING}}</div>
+          </ion-item-group>
+        </div>
+        <div class="wrapper ion-no-margin" style="box-shadow: none;">
+          <ion-item-group class="rank">
+            <ion-label class="wrap-title ion-no-margin">
+              <ion-label class="ion-text-start" style="padding-left: 20px">
+                {{dataLanguage.MATCH_INFOMATION}}
+              </ion-label>
+              <ion-label class=""> </ion-label>
+            </ion-label>
+            <ion-item class="item-info-match" lines="none">
+              <ion-item-divider>
+                <img src="assets/img/match/ref.svg" alt="" />
+                <ion-text style="font-weight: normal; font-size: 15px">
+                  {{dataLanguage.ARBITRATION}}:
+                </ion-text>
+              </ion-item-divider>
+              <ion-item-divider>
+                <ion-text style="font-weight: bold; margin-left: 8px">
+                  {{m.match_referee}}
+                </ion-text>
+                <ion-text style="font-weight: bold; margin-left: 8px" *ngIf="!m.match_referee">
+                  {{dataLanguage.UPDATING}}
+                </ion-text>
+              </ion-item-divider>
+            </ion-item>
+            <ion-item class="item-info-match" lines="none">
+              <ion-item-divider>
+                <img src="assets/img/match/stadium.svg" alt="" />
+                <ion-text style="font-weight: normal; font-size: 15px">
+                  {{dataLanguage.STADIUM}}:
+                </ion-text>
+              </ion-item-divider>
+              <ion-item-divider>
+                <ion-text style="font-weight: bold; margin-left: 8px">
+                  {{m.match_stadium}}
+                </ion-text>
+                <ion-text style="font-weight: bold; margin-left: 8px" *ngIf="!m.match_stadium">
+                  {{dataLanguage.UPDATING}}
+                </ion-text>
+              </ion-item-divider>
+            </ion-item>
+            <ion-item class="item-info-match" lines="none">
+              <!-- <ion-item-divider>
+                <img src="assets/img/match/people_join.svg" alt="" />
+                <ion-text style="font-weight: normal">
+                  {{dataLanguage.NUMBER_PARTICIPANTS}}:
+                </ion-text  >
+              </ion-item-divider> -->
+              <ion-item-divider>
+                <ion-text style="font-weight: bold; margin-left: 8px">
+                </ion-text>
+              </ion-item-divider>
+            </ion-item>
+          </ion-item-group>
+        </div>
+      </ion-item-group>
+    </ion-slide>
+    <ion-slide>
+      <ion-segment value="onTop" swipeGesture="false" mode="ios">
+        <ion-button value="onTop" class="onTop" (click)="changeTabs(true)" [ngClass]="{'show': tagNew}">
+          <ion-label>{{m.match_hometeam_name}}</ion-label>
+          <span class="footer_under" *ngIf="tagNew"></span>
+        </ion-button>
+        <ion-button value="all" class="all" (click)="changeTabs(false)" [ngClass]="{'show': !tagNew}">
+          <ion-label>{{m.match_awayteam_name}}</ion-label>
+          <span class="footer_under" *ngIf="!tagNew"></span>
+        </ion-button>
+      </ion-segment>
+      <ion-item-group class="home team" *ngIf="tagNew">
+        <ion-label *ngIf="listHomeTeam.coach.length > 0">{{dataLanguage.TEAM}}</ion-label>
+        <ion-label *ngIf="match[0].match_hometeam_system != ''" >{{ match[0].match_hometeam_system }}</ion-label>
+        <ion-label *ngIf="listHomeTeam.coach.length <= 0">{{dataLanguage.TEAM}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list>
+          <ion-item *ngFor="let team of listHomeTeam.starting_lineups">
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="number">{{team.lineup_number}}</span>
+            <span class="name">{{team.lineup_player}}</span>
+            <span class="miss"></span>
+          </ion-item>
+        </ion-list>
+
+        <ion-label *ngIf="listHomeTeam.coach.length > 0">{{dataLanguage.COACH}}</ion-label>
+        <ion-label *ngIf="listHomeTeam.coach.length == 0">{{dataLanguage.COACH}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list *ngIf="listHomeTeam.coach.length > 0">
+          <ion-item *ngFor="let coach of listHomeTeam.coach">
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="coach" style="padding-left: 14px;">{{coach.lineup_player}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-label *ngIf="listHomeTeam.coach.length > 0">{{dataLanguage.SUBSTIUTES}}</ion-label>
+        <ion-label *ngIf="listHomeTeam.substitutes.length == 0">{{dataLanguage.SUBSTIUTES}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list>
+          <ion-item *ngFor="let team of listHomeTeam.substitutes">
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="number">{{team.lineup_number}}</span>
+            <span class="name">{{team.lineup_player}}</span>
+            <span class="miss"></span>
+          </ion-item>
+        </ion-list>
+      </ion-item-group>
+      <ion-item-group class="segement-news team" *ngIf="!tagNew">
+        <ion-label *ngIf="listAwayTeam.coach.length > 0">{{dataLanguage.TEAM}}</ion-label>
+        <ion-label *ngIf="match[0].match_awayteam_system != ''">{{ match[0].match_awayteam_system }}</ion-label>
+        <ion-label *ngIf="listAwayTeam.coach.length <= 0">{{dataLanguage.TEAM}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list *ngFor="let team of listAwayTeam?.starting_lineups">
+          <ion-item>
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="number">{{team.lineup_number}}</span>
+            <span class="name">{{team.lineup_player}}</span>
+            <span class="miss"></span>
+          </ion-item>
+        </ion-list>
+        <ion-label *ngIf="listAwayTeam.coach.length > 0">{{dataLanguage.COACH}}</ion-label>
+        <ion-label *ngIf="listAwayTeam.coach.length == 0">{{dataLanguage.COACH}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list>
+          <ion-item *ngFor="let coach of listAwayTeam?.coach">
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="coach">{{coach.lineup_player}}</span>
+          </ion-item>
+        </ion-list>
+        <ion-label *ngIf="listAwayTeam.coach.length > 0">{{dataLanguage.SUBSTIUTES}}</ion-label>
+        <ion-label *ngIf="listAwayTeam.substitutes.length == 0">{{dataLanguage.SUBSTIUTES}}: {{dataLanguage.UPDATING}}</ion-label>
+        <ion-list>
+          <ion-item *ngFor="let team of listAwayTeam.substitutes">
+            <img src="assets/img/match/player.svg" alt="">
+            <span class="number">{{team.lineup_number}}</span>
+            <span class="name">{{team.lineup_player}}</span>
+            <span class="miss"></span>
+          </ion-item>
+        </ion-list>
+      </ion-item-group>
+    </ion-slide>
+    <ion-slide>
+      <div class="wrapper" style="box-shadow: none;">
+        <ion-item-group class="statistis">
+          <ion-label class="title"> {{dataLanguage.DEVELOPMENTS}} </ion-label>
+          <div class="" *ngIf="listStatistics.length!=0">
+            <ion-item-group class="progress">
+              <ion-label class="text"> {{dataLanguage.BALL_CONTROL}} </ion-label>
+              <ion-text class="progress-percent">
+                <ion-label> {{percentHomeFirst}}%</ion-label>
+                <ion-label> {{percentAwayFirst}}%</ion-label>
+              </ion-text>
+              <ion-progress-bar [value]="valueHomeFirst"></ion-progress-bar>
+            </ion-item-group>
+            <ion-item-group class="progress goal-attempts" *ngFor="let i of listStatistics">
+              <ion-label class="text"> {{i?.type}} </ion-label>
+              <div class="wrapper-progress">
+                {{i.home}}
+                <ion-progress-bar [value]="i.value"></ion-progress-bar>
+                {{i.away}}
+              </div>
+            </ion-item-group>
+          </div>
+          <div *ngIf="listStatistics.length==0">{{dataLanguage.UPDATING}}</div>
+        </ion-item-group>
+      </div>
+    </ion-slide>
+    <ion-slide>
+      <ion-segment value="home" swipeGesture="false" mode="ios">
+        <!-- <ion-text>Tổng thể</ion-text>
+         -->
+        <ion-button value="all" class="onTop" (click)="changeTabs('all')" [ngClass]="{'show': tagNew=='all'}">
+          <ion-label>{{dataLanguage.OVERALL}}</ion-label>
+          <span class="footer_under" *ngIf="tagNew=='all'"></span>
+        </ion-button>
+        <ion-button value="home" class="onTop" (click)="changeTabs('home')" [ngClass]="{'show': tagNew=='home'}">
+          <ion-label>{{dataLanguage.HOME_TEAM}}</ion-label>
+          <span class="footer_under" *ngIf="tagNew=='home'"></span>
+        </ion-button>
+        <ion-button value="away" class="onTop" (click)="changeTabs('away')" [ngClass]="{'show': tagNew=='away'}">
+          <ion-label>{{dataLanguage.GUEST_TEAM}}</ion-label>
+          <span class="footer_under" *ngIf="tagNew=='away'"></span>
+        </ion-button>
+      </ion-segment>
+      <div class="wrapper" *ngIf="tagNew=='all' && listRank.length>0" style="box-shadow: none">
+        <ion-item-group class="rank">
+          <ion-label class="wrap-title" style=" margin-top: 30px;">
+            <ion-label class="ion-text-start" style="padding-left: 20px; background-color: #fff;">
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-modify">
+
+                <ion-label> P </ion-label>
+                <ion-label> F:A </ion-label>
+                <ion-label> +/- </ion-label>
+                <ion-label> PST </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-label>
+          <ion-item class="item" lines="none" *ngFor="let rank of listSum" style="--inner-padding-end: 0;">
+
+            <ion-label class="ion-text-start item-left">
+              <ion-label [ngClass]="{'top_c1': converNumber(rank[1].overall_league_position) <=2,
+                                          'top_c2':converNumber(rank[1].overall_league_position)>2 && converNumber(rank[1].overall_league_position)<10,
+                                        'top_down':converNumber(rank[1].overall_league_position)>=10
+                                        }" class="rank_position">{{rank[1].overall_league_position}}</ion-label>
+              <img [src]="rank[1]?.team_badge" alt="" />
+              <span style="width: 71%; color: #565656;
+                    background-color: #fff; margin-top: -6px;">{{rank[1].team_name}} </span>
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-row">
+                <ion-label> {{rank[1].overall_league_payed}} </ion-label>
+                <ion-label> {{rank[1].overall_league_W}}:{{rank[1].overall_league_L}} </ion-label>
+                <ion-label> {{rank[1].GD}} </ion-label>
+                <ion-label> {{rank[1].overall_league_PTS}} </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-item>
+        </ion-item-group>
+      </div>
+      <div class="wrapper" *ngIf="tagNew=='home' && listRank.length>0" style="box-shadow: none">
+        <ion-item-group class="rank">
+          <ion-label class="wrap-title" style=" margin-top: 30px;">
+            <ion-label class="ion-text-start" style="padding-left: 20px; background-color: #fff;">
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-modify">
+                <ion-label> P </ion-label>
+                <ion-label> F:A </ion-label>
+                <ion-label> +/- </ion-label>
+                <ion-label> PST </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-label>
+          <ion-item class="item" lines="none" *ngFor="let rank of listHome, " style="--inner-padding-end: 0;">
+
+            <ion-label class="ion-text-start item-left">
+              <ion-label [ngClass]="{'top_c1': converNumber(rank[1].home_league_position) <=2,
+                                    'top_c2':converNumber(rank[1].home_league_position)>2 && converNumber(rank[1].home_league_position)<10,
+                                  'top_down':converNumber(rank[1].home_league_position)>=10
+                                  }" class="rank_position">{{rank[1].home_league_position}}</ion-label>
+              <img [src]="rank[1]?.team_badge" alt="" />
+              <span style="width: 71%; color: #565656;
+              background-color: #fff; margin-top: -6px;">{{rank[1].team_name}} </span>
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-row">
+                <ion-label> {{rank[1].overall_league_payed}} </ion-label>
+                <ion-label> {{rank[1].overall_league_W}}:{{rank[1].overall_league_L}} </ion-label>
+                <ion-label> {{rank[1].GD}} </ion-label>
+                <ion-label> {{rank[1].overall_league_PTS}} </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-item>
+        </ion-item-group>
+      </div>
+      <div class="wrapper " *ngIf="tagNew=='away' && listRank.length>0" style="box-shadow: none">
+        <ion-item-group class="rank">
+          <ion-label class="wrap-title" style=" margin-top: 30px;">
+            <ion-label class="ion-text-start" style="padding-left: 20px; background-color: #fff;">
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-modify">
+                <ion-label> P </ion-label>
+                <ion-label> F:A </ion-label>
+                <ion-label> +/- </ion-label>
+                <ion-label> PST </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-label>
+          <ion-item class="item" lines="none" *ngFor="let rank of listAway" style="--inner-padding-end: 0;">
+            <ion-label class="ion-text-start item-left">
+              <ion-label [ngClass]="{'top_c1': converNumber(rank[1].away_league_position) <=2,
+                                    'top_c2':converNumber(rank[1].away_league_position)>2 && converNumber(rank[1].away_league_position)<10,
+                                  'top_down':converNumber(rank[1].away_league_position)>=10
+                                  }" class="rank_position">{{rank[1].away_league_position}}</ion-label>
+              <img [src]="rank[1]?.team_badge" alt="" />
+              <span style="width: 71%; color: #565656;
+              background-color: #fff; margin-top: -6px;">{{rank[1].team_name}} </span>
+            </ion-label>
+            <ion-label>
+              <ion-item-group class="group-score group-score-row">
+                <ion-label> {{rank[1].overall_league_payed}} </ion-label>
+                <ion-label> {{rank[1].overall_league_W}}:{{rank[1].overall_league_L}} </ion-label>
+                <ion-label> {{rank[1].GD}} </ion-label>
+                <ion-label> {{rank[1].overall_league_PTS}} </ion-label>
+              </ion-item-group>
+            </ion-label>
+          </ion-item>
+        </ion-item-group>
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

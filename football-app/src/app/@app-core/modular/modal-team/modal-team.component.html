@@ -1,0 +1,17 @@
+<ion-content class="ion-padding">
+  <ion-searchbar [(ngModel)]="search" (ionChange)="change($event)" mode="ios" placeholder="{{dataLanguage.SEARCH}}"></ion-searchbar>
+
+<p>{{title_team}}</p>
+<div class="list-country-item">
+  <ion-buttons *ngFor="let items of data_team |filter: search" (click)="clickSub(items)" class="country-item">
+    <p class="text-name">
+      {{
+      items.league_name
+      }}
+    </p>
+    <i class="fas fa-star sub-star" [ngClass]="{'activeSub':items.subscribe}"></i>
+    <!-- <i *ngIf="!subscribe" class="fal fa-star sub-star"></i> -->
+  </ion-buttons>
+
+</div>
+</ion-content>

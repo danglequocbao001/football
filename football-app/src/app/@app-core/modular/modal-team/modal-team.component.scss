@@ -1,0 +1,59 @@
+ion-content {
+    --overflow: hidden;
+    height: 69%;
+    --background: var(--white-not-change) ;
+    ion-searchbar {
+        font-family: "Saira", sans-serif !important;
+        width: 79%;
+        padding: 0;
+        --background: #eaeaea;
+        height: 36px;
+        border-radius: 8px;
+        margin: 0 auto;
+        color: var(--gray56-color);
+      }
+  
+}
+p {
+    margin-top: 0px;
+    margin-bottom: 1px;
+    color: var(--back-not-change);
+}
+.list-country-item {
+    overflow: scroll;
+    height: 84%;
+    .country-item {
+        .text-name {
+            font-size: 13px;
+            line-height: 20px;
+            color: #565656;
+            background: #f2f2f2;
+            padding: 10px 5px;
+            border-radius: 6px;
+            width: 100vw;
+            margin: 2px 0;
+            padding-left: 16px;
+        }
+        .sub-star {
+            font-size: 19px;
+            position: absolute;
+            right: 13px;
+            color: #c4c4c4;
+        }
+    }
+    .text-more {
+        font-size: 15px;
+        line-height: 20px;
+        color: #2c28fc;
+        background: #f2f2f2;
+        padding: 10px 5px;
+        width: 100vw;
+        margin: 2px 0;
+        text-align: center;
+        text-decoration-line: underline;
+    }
+}
+
+.activeSub {
+    color: #67b6ff !important;
+}

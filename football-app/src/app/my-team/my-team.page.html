@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar class="ion-padding">
+    <div class="group-header">
+      <ion-toggle mode="ios" (ionChange)="changeValue($event)">
+      </ion-toggle>
+      <ion-icon name="search"(click)="gotoSearch()"></ion-icon>
+    </div>
+  </ion-toolbar>
+  <ion-slides [options]="slideOpts" class="slides">
+    <ion-slide *ngFor="let item of bannerData">
+      <a [href] ="item.url" class="image">
+        <img [src]="item.thumbnail" class="img-slide"/>
+      </a>
+    </ion-slide>
+  </ion-slides>
+  <ion-segment mode="ios" value="{{valueTab}}"  swipeGesture="false">
+    <ion-segment-button value="all" class="all" (click)="changeTabsAll()">
+      <ion-label>{{dataLanguage.ALL}}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="my-team" class="my-team" (click)="changeTabsMyTeam()">
+      <ion-label>{{dataLanguage.MINE}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-header>
+<ion-content>
+ 
+  <ion-slides #slides [options]="mainSlide">
+    <ion-slide [options]="mainSlide">
+      <div class="back-drop"></div>
+      <ion-item-group class="tab-all" *ngIf="tagNew == 2">
+        <span class="today"> - {{dataLanguage.TODAY}} - <br />
+          <span class="length-list">{{all[0].countToday}} {{dataLanguage.MATCH}}
+            <span *ngIf="all[0].countToday>1 && checkLanguage" class="es">es</span>
+          </span>
+        </span>
+        <app-list-my-team [data]="all[0].listFinal"[label]="'false'"></app-list-my-team>
+        <span class="today tomorrow"> - {{dataLanguage.TOMORROW}} - <br />
+          <span class="length-list">{{all[1].countTomorrow}} {{dataLanguage.MATCH}}
+            <span *ngIf="all[1].countTomorrow>1 && checkLanguage" class="es">es</span>
+
+          </span>
+          <app-list-my-team [data]="all[1].listFinal"[label]="'false'"></app-list-my-team>
+          <ion-item-group class="not-today red-color">
+            <ion-label>
+               -- {{dataLanguage.OTHER_MATCH}} --
+            </ion-label>
+            <ion-label class="normal length-list">{{all[2].listMonth.length}} {{dataLanguage.MATCH}}
+              <span *ngIf="all[2].listMonth.length>1 && checkLanguage" class="es">es</span>
+            </ion-label>
+
+          </ion-item-group>
+        </span>
+        <app-list-my-team [data]="all[2].listFinal"[label]="'true'" ></app-list-my-team>
+       
+      </ion-item-group>
+      <ion-item-group class="tab-home" *ngIf="tagNew == 1">
+        <span class="today"> - {{dataLanguage.TODAY}} - <br />
+          <span class="length-list">{{my[0].countToday}} {{dataLanguage.MATCH}}
+            <span *ngIf="my[0].countToday>1 && checkLanguage" class="es">es</span>
+          </span>
+        </span>
+        <app-list-my-team [data]="my[0].listFinal"[label]="'false'"></app-list-my-team>
+        <span class="today tomorrow"> - {{dataLanguage.TOMORROW}} - <br />
+          <span class="length-list">{{my[1].countTomorrow}} {{dataLanguage.MATCH}}
+            <span *ngIf="my[1].countTomorrow>1 && checkLanguage" class="es">es</span>
+          </span>
+          <app-list-my-team [data]="my[1].listFinal"[label]="'false'"></app-list-my-team>
+          <ion-item-group class="not-today red-color">
+            <ion-label class="">
+             -- {{dataLanguage.OTHER_MATCH}} --
+            </ion-label>
+            <ion-label class="normal length-list">{{my[2].listMonth.length}} {{dataLanguage.MATCH}}
+              <span *ngIf="my[2].listMonth.length>1 && checkLanguage" class="es">es</span>
+            </ion-label>
+          </ion-item-group>
+        </span>
+        <app-list-my-team [data]="my[2].listFinal" [label]="'true'"></app-list-my-team>
+       
+      </ion-item-group>
+    
+      <ion-item-group class="tab-home live" *ngIf="tagNew == 3">
+        <span class="today"> - LIVE - <br />
+          <span class="length-list">{{my[0].listLive.length}} {{dataLanguage.MATCH}}
+              <span *ngIf="my[0].listLive.length>1 && checkLanguage" class="es">es</span>
+          </span>
+        </span>
+        <app-list-my-team [data]="my[0].listLiveHandle"[label]="'false'"></app-list-my-team>
+
+      </ion-item-group>
+      <ion-item-group class="tab-all live" *ngIf="tagNew == 4">
+        <span class="today"> - LIVE - <br />
+          <span class="length-list">{{all[0].listLive.length}} {{dataLanguage.MATCH}}
+             <span *ngIf="all[0].listLive.length>1 && checkLanguage" class="es">es</span>
+          </span>
+        </span>
+        <app-list-my-team [data]="all[0].listLiveHandle"[label]="'false'"></app-list-my-team>
+
+      </ion-item-group>
+     
+    </ion-slide>
+
+  </ion-slides>
+  <ion-item-group *ngIf = "!checkTabMyData && tagNew == '1'" class="data-not-found">{{dataLanguage.SCORE_INTRODUCE}}</ion-item-group>
+  <div *ngIf = "!checkTabMyData && tagNew == '1'" class="icon-introduce"></div>
+
+</ion-content>

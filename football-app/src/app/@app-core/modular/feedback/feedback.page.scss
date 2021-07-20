@@ -1,0 +1,27 @@
+ion-header {
+  ion-toolbar {
+    --padding-bottom: 0px;
+    .main-title {
+      display: block;
+      text-align: center;
+    }
+  }
+}
+
+ion-content {
+  .input {
+    border: 1px solid #cccccc;
+    padding: 5px 8px;
+    border-radius: 10px;
+    height: 20vh;
+  }
+  ion-button {
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    width: 20vh;
+    --color: #fff;
+    --background: #fcb441;
+    --background-activated: #fcb579;
+  }
+}
